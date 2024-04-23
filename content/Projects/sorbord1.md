@@ -278,6 +278,6 @@ With this process repeated for each diode and socket for each half of the keyboa
 tab  Q    W    F    P    B      J    L    U    Y    ;
 esc  A    R    S    T    G      M    N    E    I    O
 alt  Z    X    C    D    V      K    H    ,    .    /
-			  gui  ctrl spc    ret  shf  bksp
-						lwr    rse
+              gui  ctrl spc    ret  shf  bksp
+                        lwr    rse
 ```
