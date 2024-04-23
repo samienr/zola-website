@@ -1,0 +1,42 @@
+# The URL the site will be built for
+base_url = "https://samienr.photography"
+
+title = "Samien's Notebook"
+description = ""
+
+author = "Samien Rahman"
+
+default_language = "en"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+minify_html = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+extra_syntaxes_and_themes = ["highlight_themes"]
+highlight_theme = "css"
+highlight_themes_css = [
+    { theme = "rose-pine-dark", filename = "css/syntax-theme-dark.css" },
+    { theme = "rose-pine-light", filename = "css/syntax-theme-light.css" },
+]
+
+external_links_target_blank = true
+
+[search]
+include_description = false
+
+[extra]
+header_nav = [
+    #  { url = "/", name = "/home/" },
+  { url = "/Blog", name = "/journal/" },
+  { url = "/Projects", name = "/projects/" },
+  { url = "/Photography", name = "/photography/" },
+  { url = "/#about", name = "/about/" }
+]
