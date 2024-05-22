@@ -92,55 +92,55 @@ html {
 }
 
 .social-links {
-    flex-direction: row;
-    align-self: center !important;
-    justify-content: center;
-    column-gap: 64px;
-    margin-bottom: 40px;
-    max-width: 100%;
-    align-items: flex-start;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+  flex-direction: row;
+  align-self: center !important;
+  justify-content: center;
+  column-gap: 64px;
+  margin-bottom: 40px;
+  max-width: 100%;
+  align-items: flex-start;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .social-links a {
-    color: #ffffff;
-    font-family: "Source Code Pro", monospace;
-    font-size: 16px;
-    font-weight: 400;
-    text-decoration: none;
-    transition: ease .2s;
+  color: #ffffff;
+  font-family: "Source Code Pro", monospace;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: ease .2s;
 }
 
 .social-links a:hover {
-    color: #b48ead;
+  color: #b48ead;
 }
 
 .internal-links {
-    flex-direction: row;
-    align-self: center !important;
-    justify-content: center;
-    column-gap: 100px;
-    margin-top: 20px;
-    max-width: 100%;
-    align-items: flex-start;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+  flex-direction: row;
+  align-self: center !important;
+  justify-content: center;
+  column-gap: 100px;
+  margin-top: 20px;
+  max-width: 100%;
+  align-items: flex-start;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .internal-links a {
-    color: #ebbcba;
-    font-family: "Source Code Pro", monospace;
-    font-size: 20px;
-    font-weight: 400;
-    text-decoration: none;
-    transition: ease .2s;
+  color: #ebbcba;
+  font-family: "Source Code Pro", monospace;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: ease .2s;
 }
 
 .internal-links a:hover {
-    color: #e1e8ff;
+  color: #e1e8ff;
 }
 
 /* Body Section */
@@ -166,4 +166,65 @@ html {
 .body-section p {
   margin-bottom: 20px;
   line-height: 1.7;
+}
+
+
+/* Mobile responsive design */
+
+/* Media Queries */
+@media screen and (max-width: 846px) {
+  .hero-content h1 {
+    font-size: 64px;
+    margin-bottom: 10px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .social-links {
+    column-gap: 32px;
+    margin-bottom: 20px;
+  }
+
+  .social-links a {
+    font-size: 14px;
+  }
+
+  .internal-links {
+    column-gap: 50px;
+    margin-top: 10px;
+  }
+
+  .internal-links a {
+    font-size: 2.4vw;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .hero-content h1 {
+    font-size: 48px;
+    margin-bottom: auto;
+  }
+
+
+  .hero-content p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .internal-links {
+    row-gap: 8vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .internal-links a {
+    font-size: 16px;
+  }
+
+  .body-section p {
+    font-size: 14px;
+  }
 }
