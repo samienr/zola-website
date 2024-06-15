@@ -22,8 +22,8 @@ To start, I mapped out a rough layout by tracing my finger movements using a pai
 That gave a basic idea of the where each finger naturally goes as I extend them.
 
 As for hardware, I chose:
-- Seeed Studio XIAO nRF52840 microcontroller for its Bluetooth Low Energy capability, affordable price, and ARM architecture.
-- Kalih Choc Red switches for their low profile and because I like linear switches
+- **Seeed Studio XIAO nRF52840** microcontroller for its Bluetooth Low Energy capability, affordable price, and ARM architecture.
+- **Kalih Choc Red switches** for their low profile and because I like linear switches
 
 ---
 # Step 2: Ergogen
@@ -102,9 +102,8 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 # Step 4: Assembly and Firmware
 I ordered my PCB from [JLCPCB](https://jlcpcb.com/) in black and white for about 20 USD, the microcontroller from [SeeedStudio](https://www.seeedstudio.com/), and the other components from [Typeractive](https://typeractive.xyz/).
 
-I used my university's makerspace for soldering, learning about reflow soldering for small components.
+I used my university's makerspace for soldering, learning about reflow soldering for smaller components.
 
-(INCLUDE HOW I USED SHARPIE TO COLOR PCB EDGES)
 ## Keymap
 First, I defined the keymap. I opted for the Colemak-DH layout, as it was designed to be a more ergonomic layout that also allows for faster typing speeds. The other layers were designed by seeing various designs online and then just iterating.
 
