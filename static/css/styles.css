@@ -78,7 +78,8 @@ body {
   font-size: 1.6em;
   line-height: 1.6em;
   max-width: 73rem;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 30px;
   overflow-wrap: break-word;
   background: var(--bgColor);
   color: var(--fgColor);
@@ -178,9 +179,10 @@ hr {
 img {
   max-width: 90%;
   height: auto;
-  margin: .2rem;
+  margin: 1rem auto;
   padding: .2rem;
-  border: solid 1.5px var(--metaColor);
+  display: block;
+  /*border: solid 1.5px var(--metaColor);*/
 }
 
 p code,

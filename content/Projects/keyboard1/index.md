@@ -17,8 +17,8 @@ Both of these goals are achieved by two design choices:
 2. Key placement matching the natural positioning of fingers— meaning a split layout
 
 To start, I mapped out a rough layout by tracing my finger movements using a painting app on an iPad.
-![[finger_paint.png]]
-(Super basic, I know)
+![Traced finger positions](finger_paint.png)  
+
 That gave a basic idea of the where each finger naturally goes as I extend them.
 
 As for hardware, I chose:
@@ -83,7 +83,7 @@ I needed a tool to design the layout and found [Ergogen](https://ergogen.cache.w
 
 I used [Ceoloide's](https://github.com/ceoloide/ergogen-footprints/tree/main) footprint for the switch footprints, which are reversible, meaning that both halves
 
-![[ergogen_preview.png]]
+![Preview of layout in ergogen online tool](ergogen_preview.png)
 Above is the preview image I got from Ergogen after designing my layout.
 
 ---
@@ -91,13 +91,13 @@ Above is the preview image I got from Ergogen after designing my layout.
 
 Ergogen generated a KiCad file with the board outline and switch footprints. I had to create and route the traces. Additionally, the footprint I used for the nRF52840 didn't account for its battery pads, so I had to modify the footprint by adding a small cutout to route battery wires through. I haven't messed around with PCBs before this besides some basic designs from school, so that was a nice learning experience. The supportive community on the [Absolem Club Discord server](https://discord.gg/kk4rXYkp4H) helped me through the process.
 
-![[KiCad_before.png]]
+![](KiCad_before.png)
 The PCB Ergogen generated
-![[KiCad_after.png]]
+![](KiCad_after.png)
 After adding traces and adjusting the microcontroller footprint
 
 Once all the electronics were in place, I decided to add some decorative patterns to the pcb, as I decided not to use a plate on this keyboard.
-![[final_pcb.png]]
+![](final_pcb.png)
 And with that, the PCB design was pretty much done. All that was left was ordering everything and putting it all together.
 # Step 4: Assembly and Firmware
 I ordered my PCB from [JLCPCB](https://jlcpcb.com/) in black and white for about 20 USD, the microcontroller from [SeeedStudio](https://www.seeedstudio.com/), and the other components from [Typeractive](https://typeractive.xyz/).
@@ -108,16 +108,18 @@ I used my university's makerspace for soldering, learning about reflow soldering
 ## Keymap
 First, I defined the keymap. I opted for the Colemak-DH layout, as it was designed to be a more ergonomic layout that also allows for faster typing speeds. The other layers were designed by seeing various designs online and then just iterating.
 
-0 - **Default Layer**
-![[default_layer.png]]
-1 - **Symbol Layer**
-![[symbol_layer.png]]
-2 - **Number Layer**
-![[number_layer.png]]
-3 - **Function Layer**
-![[tri_layer.png]]
-4 - **Gaming Layer**
-![[gaming_layer.png]]
+0 - **Default Layer**  
+![](default_layer.png)  
+1 - **Symbol Layer**  
+![](symbol_layer.png)
+2 - **Number Layer**  
+![](number_layer.png)
+3 - **Function Layer**  
+![](tri_layer.png)
+4 - **Gaming Layer**  
+![](gaming_layer.png)
+
+
 I also decided to make another layer for gaming to keep the WASD layout, but I haven’t been able to test how effective this is.
 
 ## Firmware
@@ -153,4 +155,5 @@ I next decided to take a look at the PCB layout. This is where I found the culpr
 
 # Conclusion
 This project was a bit challenging but very rewarding, providing me with a custom mechanical keyboard tailored to my preferences. It was also my first truly original electronics project, and it taught me a lot about PCB design and soldering, all through practical hands-on experience. This project also helped in refining my independent problem-solving skills, as I am used to having either documentation or peers to take help from. I hope this inspires others to try their hand at DIY keyboard building!
-![[keyboard.jpg]]
+
+![The completed product](keyboard.jpg)
