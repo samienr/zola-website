@@ -1,8 +1,8 @@
 # The URL the site will be built for
-base_url = "https://samienr.photography"
+base_url = "https://samienr.com"
 
-title = "Samien's Notebook"
-description = ""
+title = "Samien Rahman"
+description = "Electrical Engineer (nerd)"
 
 author = "Samien Rahman"
 
