@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  {{ page.title }}
-</h1>
-<p class="subtitle"><strong>{{ page.date }}</strong></p>
+{% include "partials/breadcrumbs.html" -%}
+{% if page.extra.archive %}
+	<div class="statement-container archive">
+		<strong class="big">
+			<i class="icon"></i>
+			Archived
+		</strong>
+		{{ page.extra.archive | markdown | safe }}
+	</div>
+{% endif %}
 {{ page.content | safe }}
 {% endblock content %}

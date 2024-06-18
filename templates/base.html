@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  {% include "basehead.html" %}
-</head>
-
+{% include "partials/head.html" -%}
 <body>
-  <div class="wrapper">
-    <header>
-      {% include "header.html" %}
-    </header>
-    <main>
-      {% block content %}
-      {% endblock content %}
-    </main>
-    <footer>
-      {% include "footer.html" %}
-    </footer>
-  </div>
+	{% include "partials/nav.html" -%}
+	<div id="main" class="container">
+		{% block custom %}{%- endblock -%}
+		{% block content %}{%- endblock -%}
+	</div>
+	{% include "partials/footer.html" -%}
 </body>
-
 </html>

@@ -1,0 +1,33 @@
+/*!
+ * Duckquill v2.1.0 (https://daudix.codeberg.page/duckquill)
+ * Copyright 2024 David "Daudix" Lapshin
+ * Licensed under MIT (https://codeberg.org/daudix/duckquill/src/branch/main/LICENSE)
+ */
+
+@use "normalize";
+
+@use "variables";
+
+@use "article-list";
+@use "buttons";
+@use "code";
+@use "containers";
+@use "crt";
+@use "external";
+@use "general";
+@use "icon";
+@use "input";
+@use "media";
+@use "nav";
+@use "not-found";
+@use "post-nav";
+@use "footer";
+@use "statements";
+@use "table";
+@use "tags";
+@use "typography";
+@use "zola-anchor";
+
+@use "home";
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
