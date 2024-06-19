@@ -7,6 +7,15 @@
         <loc>https://samienr.com/about/</loc>
     </url>
     <url>
+        <loc>https://samienr.com/art/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/art/digital/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/art/photography/</loc>
+    </url>
+    <url>
         <loc>https://samienr.com/contact/</loc>
     </url>
     <url>
@@ -23,9 +32,6 @@
     </url>
     <url>
         <loc>https://samienr.com/notebook/LinAlg/system-of-eqs/</loc>
-    </url>
-    <url>
-        <loc>https://samienr.com/photography/</loc>
     </url>
     <url>
         <loc>https://samienr.com/projects/</loc>
