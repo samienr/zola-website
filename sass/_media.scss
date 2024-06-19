@@ -1,7 +1,7 @@
 img {
 	transition: var(--transition-longer);
 
-	&:not(.no-hover, &[src*="#no-hover"]) {
+	&:not(.fancybox-image, .no-hover, &[src*="#no-hover"]) {
 		cursor: zoom-in;
 
 		&:hover {
@@ -12,7 +12,7 @@ img {
 	}
 }
 
-img,
+img:not(.fancybox-image),
 video {
 	display: block;
 	margin: 1rem auto;
@@ -40,3 +40,21 @@ video {
 		}
 	}
 }
+
+#gallery {
+	column-count: 3; /* Number of columns */
+	column-gap: 1em; /* Gap between columns */
+	width: 90%;
+	margin: 0 auto;
+  }
+  
+  .gallery-item {
+	break-inside: avoid; /* Prevents breaking images across columns */
+	margin-bottom: 1em; /* Space between images */
+  }
+  
+  .galleryPhoto {
+	width: 100%;
+	height: auto;
+	display: block;
+  }

@@ -39,7 +39,7 @@ date_format = "%B %d, %Y"
 # URL to website's issue tracker
 #issues_url = "https://codeberg.org/daudix/duckquill/issues"
 # URL to website's source code
-oource_url = "https://codeberg.org/daudix/duckquill"
+#oource_url = "https://codeberg.org/daudix/duckquill"
 # Additional CSS stylesheets; expects them to be in the "./static/" directory.
 # If you are using Sass it will be generated there automatically.
 # stylesheets = [
@@ -66,7 +66,7 @@ show_copy_button = true
 links = [
   { url = "@/projects/_index.md", name = "Projects" },
   { url = "@/notebook/_index.md", name = "Notebook" },
-  { url = "@/photography.md", name = "Photography" },
+  { url = "@/photography/index.md", name = "Photography" },
   { url = "@/about/index.md", name = "About" },
   { url = "@/contact.md", name = "Contact" },
 ]

@@ -55,6 +55,9 @@
 		});
 	</script>
 
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+	
 	{% if config.extra.scripts %}
 		{% for script in config.extra.scripts %}
 			<script src="{{ get_url(path=script) }}"></script>

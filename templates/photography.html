@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "partials/breadcrumbs.html" -%}
+{{ page.content | safe }}
+
+<div id="gallery">
+    {% for asset in page.assets -%}
+      {%- if asset is matching("[.](jpg|png)$") -%}
+        {% set image = resize_image(path=asset, width=400, height=300, op="fit") %}
+        <div class="gallery-item">
+          <a href="{{ get_url(path=asset) }}" target="_blank" data-fancybox="gallery" data-caption="">
+            <img class="galleryPhoto" src="{{ image.url }}" />
+          </a>
+        </div>
+      {%- endif %}
+    {%- endfor %}
+</div>
+
+<script>
+    Fancybox.bind("[data-fancybox]", {
+        // Your custom options
+      });
+      
+</script>
+
+{% endblock content %}
