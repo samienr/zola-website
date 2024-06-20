@@ -37,6 +37,7 @@
 {% end %}
 </div>
 
+<style>.mobileOnly {font-size: 12px;}</style>
 <div class="mobileOnly">
 {% crt() %}
 ```
