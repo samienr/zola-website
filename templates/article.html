@@ -90,16 +90,16 @@
 {% if page.lower or page.higher %}
 	<hr>
 	<nav id="post-nav">
-		{% if page.higher %}
-			<a class="post-nav-item post-nav-prev" href="{{ page.higher.permalink }}">
+		{% if page.lower %}
+			<a class="post-nav-item post-nav-prev" href="{{ page.lower.permalink }}">
 				<div class="nav-arrow">← Previous</div>
-				<span class="post-title">{{ page.higher.title }}</span>
+				<span class="post-title">{{ page.lower.title }}</span>
 			</a>
 		{% endif %}
-		{% if page.lower %}
-			<a class="post-nav-item post-nav-next" href="{{ page.lower.permalink }}">
+		{% if page.higher %}
+			<a class="post-nav-item post-nav-next" href="{{ page.higher.permalink }}">
 				<div class="nav-arrow">Next →</div>
-				<span class="post-title">{{ page.lower.title }}</span>
+				<span class="post-title">{{ page.higher.title }}</span>
 			</a>
 		{% endif %}
 	</nav>

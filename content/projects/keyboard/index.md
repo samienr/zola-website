@@ -151,7 +151,7 @@ I began by mapping the pins on the microcontroller to the corresponding columns 
 ### Creating the shield
 Because this keyboard was completely original, there wasn’t a pre-existing shield, so I had to make my own. That wasn’t so bad. The [ZMK documentation](https://zmk.dev/docs/development/new-shield) is very well written and easy to follow.
 
-All that was left was to compile and flash the firmware! *Not Really*
+All that was left was to compile and flash the firmware! <small>Not Really</small>
 
 # Trouble in Paradise
 Despite the careful planning and assembly, I ran into a significant issue: the left half of the keyboard worked perfectly and paired with my devices, but the right half was unresponsive.

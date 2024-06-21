@@ -31,7 +31,19 @@
         <loc>https://samienr.com/notebook/LinAlg/</loc>
     </url>
     <url>
-        <loc>https://samienr.com/notebook/LinAlg/system-of-eqs/</loc>
+        <loc>https://samienr.com/notebook/LinAlg/01-system-of-eqs/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/notebook/LinAlg/02-matrices/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/notebook/LinAlg/03-rref/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/notebook/LinAlg/04-solving-systems-using-matrices/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/notebook/LinAlg/05-vectors/</loc>
     </url>
     <url>
         <loc>https://samienr.com/projects/</loc>

@@ -24,3 +24,20 @@ where all $a$'s and $b$'s are known, and $x$'s are unknown.
 > Two systems are equivalent if the solution sets are equivalent.
 
 ## Three possibilities for the solution set
+
+<dl>
+<dt>No solutions</dt>
+<dd>
+Same slope, parallel lines
+{{ image(url='nosol.svg', transparent=true) }}
+</dd>
+<dt>One unique solution</dt>
+<dd>
+Lines cross once
+{{ image(url='onesol.svg', transparent=true) }}
+</dd>
+<dt>Infinitely many solutions</dt>
+<dd>
+Equivalent Systems
+{{ image(url='infsol.svg', transparent=true) }}
+</dd>

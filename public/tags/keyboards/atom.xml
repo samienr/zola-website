@@ -235,7 +235,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 &lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
 &lt;h3 id=&quot;creating-the-shield&quot;&gt;Creating the shield&lt;&#x2F;h3&gt;
 &lt;p&gt;Because this keyboard was completely original, there wasn’t a pre-existing shield, so I had to make my own. That wasn’t so bad. The &lt;a href=&quot;https:&#x2F;&#x2F;zmk.dev&#x2F;docs&#x2F;development&#x2F;new-shield&quot;&gt;ZMK documentation&lt;&#x2F;a&gt; is very well written and easy to follow.&lt;&#x2F;p&gt;
-&lt;p&gt;All that was left was to compile and flash the firmware! &lt;em&gt;Not Really&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;All that was left was to compile and flash the firmware! &lt;small&gt;Not Really&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;trouble-in-paradise&quot;&gt;Trouble in Paradise&lt;&#x2F;h1&gt;
 &lt;p&gt;Despite the careful planning and assembly, I ran into a significant issue: the left half of the keyboard worked perfectly and paired with my devices, but the right half was unresponsive.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;initial-diagnosis&quot;&gt;Initial Diagnosis&lt;&#x2F;h3&gt;
@@ -258,7 +258,8 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		
 		src=&quot;keyboard.jpg&quot; &#x2F;&gt;
 
-&lt;figcaption&gt;The completed product&lt;&#x2F;figcaption&gt;</content>
+&lt;figcaption&gt;The completed product&lt;&#x2F;figcaption&gt;
+</content>
         
     </entry>
 </feed>
