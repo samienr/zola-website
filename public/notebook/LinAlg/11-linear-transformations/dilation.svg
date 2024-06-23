@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #ba9bc9;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 1.7px;
+      }
+
+      .cls-4 {
+        font-family: CMUClassicalSerif-Italic, 'CMU Classical Serif';
+        font-size: 9px;
+        font-style: italic;
+        isolation: isolate;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #000;
+      }
+
+      .cls-6, .cls-7 {
+        font-family: CMUSerif-Roman, 'CMU Serif';
+        font-size: 12px;
+      }
+
+      .cls-6, .cls-8 {
+        fill: #65c8d0;
+      }
+
+      .cls-7, .cls-9 {
+        fill: #ba9bc9;
+      }
+
+      .cls-5, .cls-2 {
+        stroke: #000;
+      }
+
+      .cls-2 {
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        stroke: #838bc5;
+      }
+
+      .cls-9, .cls-8 {
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <polyline class="cls-1" points="88.6 50 148.6 50 148.6 110"/>
+  <polyline class="cls-3" points="88.6 80 118.6 80 118.6 110"/>
+  <path class="cls-5" d="M168.4,107.6l7.2,2.4-7.2,2.4,1.2-2.4-1.2-2.4Z"/>
+  <path class="cls-5" d="M86.2,30.2l2.4-7.2,2.4,7.2-2.4-1.2-2.4,1.2Z"/>
+  <path class="cls-2" d="M7.6,110h162M88.6,29v162M88.6,112.2v-4.5M103.6,112.2v-4.5M118.6,112.2v-4.5M133.6,112.2v-4.5M148.6,112.2v-4.5M163.6,112.2v-4.5M73.6,112.2v-4.5M58.6,112.2v-4.5M43.6,112.2v-4.5M28.6,112.2v-4.5M13.6,112.2v-4.5M90.9,110h-4.5M90.9,125h-4.5M90.9,140h-4.5M90.9,155h-4.5M90.9,170h-4.5M90.9,185h-4.5M90.9,95h-4.5M90.9,80h-4.5M90.9,65h-4.5M90.9,50h-4.5M90.9,35h-4.5"/>
+  <text id="null" class="cls-4" transform="translate(86.4 18)"><tspan x="0" y="0">y</tspan></text>
+  <text id="null-2" data-name="null" class="cls-4" transform="translate(180.6 113)"><tspan x="0" y="0">x</tspan></text>
+  <circle class="cls-8" cx="88.6" cy="80" r="3.4"/>
+  <circle class="cls-8" cx="118.6" cy="110" r="3.4"/>
+  <circle class="cls-9" cx="88.6" cy="50" r="3.4"/>
+  <circle class="cls-9" cx="148.6" cy="110" r="3.4"/>
+  <text class="cls-6" transform="translate(58.6 78.7)"><tspan x="0" y="0">(0,1)</tspan></text>
+  <text class="cls-6" transform="translate(105.6 125)"><tspan x="0" y="0">(1,0)</tspan></text>
+  <text class="cls-7" transform="translate(58.6 53.5)"><tspan x="0" y="0">(0,2)</tspan></text>
+  <text class="cls-7" transform="translate(137.6 126.2)"><tspan x="0" y="0">(2,0)</tspan></text>
+</svg>
