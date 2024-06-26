@@ -7,6 +7,7 @@ A\vec{v}=\vec{b}
 {% end %}
 
 If $A$ is an $m\times n$ matrix and $\vec{x}$ is a vector in $\mathbb{R}^n,$ then
+
 {% katex() %}
 A\vec{x} = \begin{bmatrix}
 \vec{}{a_{1}} & \vec{a}_{2} & \cdots & \vec{a}_{i}
@@ -18,9 +19,11 @@ x_{n}
 \end{bmatrix},
 {% end %}
 where $\vec{a}_{i}$ is the $i$th column of $A$.
+
 {% katex() %}
 = x_{1}\vec{a}_{1}+x_{2}\vec{a}_{2} +\cdots+x_{n}\vec{a}_{n},
 {% end %}
+
 {% katex() %}
 A \in \mathbb{R}^{m\times n}, \vec{x} \in \mathbb{R}^n, \vec{b} \in \mathbb{R}^m.
 {% end %}
@@ -35,6 +38,7 @@ What this means is that $A\vec{x} = \vec{b}$ only has a solution **if, and only 
 > 4. $A$ has a pivot in every row.
 
 ### Example 1
+
 {% katex() %}
 \begin{bmatrix}
 -2 & 3 & 5 \\
@@ -62,6 +66,7 @@ What this means is that $A\vec{x} = \vec{b}$ only has a solution **if, and only 
 
 ## A Real Example
 Given
+
 {% katex() %}
 \left[\begin{array}{ccc|c}
 -2 & 1 & 0 & b_{1} \\
@@ -71,6 +76,7 @@ Given
 {% end %}
 for what values of $b_{1},b_{2},b_{3}$ does this system have a solution?  
 After $\text{rref}$ing the matrix, you get
+
 {% katex() %}
 \left[\begin{array}{ccc|c}
 1 & 0 & 1 & -b_{3} \\

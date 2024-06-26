@@ -33,6 +33,7 @@ b_{32} &\text{ undefined.}
 # Elementary Row Operations
 There are 3 operations:
 1. **Replacement**: Replace a row with the sum of said row and a multiple of another row.
+
 {% katex() %}
 \begin{bmatrix}
 1 & 2 & 3 \\
@@ -47,6 +48,7 @@ There are 3 operations:
 {% end %}
 
 2. **Interchange**: Swap 2 rows.
+
 {% katex() %}
 \begin{bmatrix}
 1 & 2 & 3 \\
@@ -61,6 +63,7 @@ There are 3 operations:
 {% end %}
 
 3. **Scale**: Multiply a row by a nonzero number.
+
 {% katex() %}
 \begin{bmatrix}
 1 & 2 & 3 \\

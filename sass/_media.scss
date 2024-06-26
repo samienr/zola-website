@@ -39,6 +39,10 @@ video {
 			box-shadow: none;
 		}
 	}
+
+        &.svg {
+            width: 50%;
+        }
 }
 
 #about-header {

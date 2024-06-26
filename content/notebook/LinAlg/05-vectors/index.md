@@ -16,6 +16,7 @@ v_{n}
 # Column Vector Operations
 ## Vector Addition
 If $\vec{u}$ and $\vec{v} \in \mathbb{R}^n,$ then
+
 {% katex() %}
 \vec{u}+\vec{v}=\begin{bmatrix}
 \vec{u_{1}+\vec{v_{1}}} \\
@@ -56,6 +57,7 @@ c\vec{u_{n}}
 {% end %}
 
 Example:
+
 {% katex() %}
 \begin{align*}
 \text{Given } A=\begin{bmatrix}
@@ -70,7 +72,5 @@ Ab&=\begin{bmatrix}
 \end{bmatrix}.
 \end{align*}
 {% end %}
-
----
 
 We will discuss the cross and dot products at a later time.

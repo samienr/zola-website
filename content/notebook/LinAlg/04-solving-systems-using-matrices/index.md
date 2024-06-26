@@ -29,6 +29,7 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 {% end %}
 
 Now include the other side of the equation using an augmented matrix:
+
 {% katex() %}
 \left[\begin{array}{ccc|c}
 a_{11} & \cdots & a_{1n} & b_{1} \\
@@ -45,6 +46,7 @@ a_{m1} &\cdots & a_{mn} & b_{m}
 # Solving a System
 
 1. Given a system of linear equations:
+
 {% katex() %}
 \begin{align*}
 &a_{11}x_{1}+a_{12}x_{2}+\cdots+a_{1n}x_{n} =b_{1} \\
@@ -66,6 +68,7 @@ Convert the system into an augmented matrix.
 ## Example Problem
 
 Solve for $x, y,$ and $z$ in:
+
 {% katex() %}
 \begin{align}
 -4x+3y +3z&=-2 \\

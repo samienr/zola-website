@@ -38,6 +38,7 @@ Matrices are in **Reduced Row Echelon Form** (RREF) if they are in Row Echelon F
 {% end %}
 
 They can look weird too:
+
 {% katex() %}
 \left[\begin{array}{cccc|c}
 \fbox{1} & -2 & 0 & 3 & 4 \\
@@ -45,6 +46,7 @@ They can look weird too:
 0 & 0 & 0 & 0 & 0 \\
 \end{array}\right] \text{ is also in rref.}
 {% end %}
+
 The leading entries are boxed above. They are also called *pivots.*
 
 Reduced Row Echelon Form makes it extremely easy to see the solutions to a system, keeping in mind that <colorize>each column is a variable.</colorize> 

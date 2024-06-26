@@ -4,6 +4,7 @@ title = "10 Homogenous Systems"
 
 A homogenous system is just an equation where a matrix multiplied by some vector = 0.  
 Can also be interpreted as a set of solutions that make the system = 0.
+
 {% katex() %}
 A\vec{x} = \vec{0}.
 {% end %}
@@ -11,6 +12,7 @@ A\vec{x} = \vec{0}.
 $A$ is some matrix, $\vec{0}$ is the Zero Vector.
 
 This is always consistent because
+
 {% katex() %}
 A\vec{0} = \vec{0}
 {% end %}
@@ -24,6 +26,7 @@ We simply set up an augmented matrix and solve for $x$'s that allow a solution o
 
 ### Example problem
 For what values of $\vec{x}$ does the following equation have a solution?
+
 {% katex() %}
 \begin{bmatrix}
 1 & 3 & -1 & 3 \\
@@ -62,16 +65,16 @@ We will begin by looking at this equation as a solving system of equations:
 Notice upon looking at the RREF that columns 2 and 4 do not have a pivot. This means that $x_{2}$ and $x_{4}$ are *<colorize>free variables</colorize>*.
 
 This means that we can represent this equation as the following:
-{% katex() %}
-\begin{cases}
-x_{1}+3x_{2}+2x_{4}&=0 \\
-x_{2} \text{ is free.} \\
-x_{3}-x_{4}&=0 \\
-x_{4} \text{ is free.}
-\end{cases}
-{% end %}
+
 {% katex() %}
 \begin{align*}
+\begin{cases}
+x_{1}+3x_{2}+2x_{4}=0 \\
+x_{2} \text{ is free.} \\
+x_{3}-x_{4}=0 \\
+x_{4} \text{ is free.} \\
+\end{cases} \\
+
 \text{let }x_{2}=s,x_{4}=t 
 &\implies \begin{cases}
 x_{1}=-3s-2t \\
@@ -105,4 +108,3 @@ t\begin{bmatrix}
 \end{bmatrix}, s, t, \in \mathbb{R}
 \end{align*}
 {% end %}
-

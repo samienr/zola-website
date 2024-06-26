@@ -4,6 +4,36 @@
 {% include "partials/breadcrumbs.html" -%}
 <h1>{{ section.title }}</h1>
 
+{% if section.extra.archive %}
+ <div class="statement-container archive">
+  <strong class="big">
+   <i class="icon"></i>
+   Archived
+  </strong>
+  {{ section.extra.archive | markdown | safe }}
+ </div>
+{% endif %}
+
+{% if section.extra.trigger %}
+ <div class="statement-container trigger">
+  <strong class="big">
+   <i class="icon"></i>
+   Trigger Warning
+ </strong>
+ {{ section.extra.trigger | markdown | safe }}
+ </div>
+{% endif %}
+
+{% if section.extra.disclaimer %}
+ <div class="statement-container disclaimer">
+  <strong class="big">
+   <i class="icon"></i>
+   Disclaimer
+  </strong>
+  {{ section.extra.disclaimer | markdown | safe }}
+ </div>
+{% endif %}
+
 {{ section.description | markdown | safe }}
 
 <div id="article-list">
