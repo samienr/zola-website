@@ -1,0 +1,52 @@
+ @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+html
+{
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+}
+
+.colorize,
+colorize
+{
+    color: var(--primary-color);
+}
+
+hr
+{
+    width: 60%;
+
+    &::after {
+        content: none;
+    }
+}
+
+del {
+        box-shadow: none;
+        border-radius: 0;
+        background-color: transparent;
+        padding: 0;
+        color: inherit;
+    }
+
+#breadcrumb-container {
+        opacity: 60%;
+        font-size: .8rem;
+        margin-bottom: -1rem;
+        a {
+                color: var(--fg-muted-4);
+                text-decoration: none;
+                font-weight: 400;
+                font-family: var(--font-monospace-code);
+                &:hover {
+                        color: var(--primary-color);
+                        transition: var(--transition);
+                }
+        }
+        #active-page {
+                color: var(--primary-color);
+                &:hover {
+                        opacity: 90%;
+                }
+        }
+}

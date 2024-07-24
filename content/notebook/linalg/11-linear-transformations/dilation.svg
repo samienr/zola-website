@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 131.6 131.6">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        isolation: isolate;
+      }
+
+      .cls-1, .cls-3 {
+        font-family: CMUSerif-Roman, 'CMU Serif';
+        font-size: 12px;
+      }
+
+      .cls-1, .cls-5 {
+        fill: #ba9bc9;
+      }
+
+      .cls-2 {
+        font-family: CMUClassicalSerif-Italic, 'CMU Classical Serif';
+        font-size: 9px;
+        font-style: italic;
+      }
+
+      .cls-2, .cls-6 {
+        fill: #000;
+      }
+
+      .cls-3, .cls-7 {
+        fill: #65c8d0;
+      }
+
+      .cls-6, .cls-8 {
+        stroke: #000;
+      }
+
+      .cls-8 {
+        stroke-width: 2px;
+      }
+
+      .cls-8, .cls-9 {
+        fill: none;
+      }
+
+      .cls-9 {
+        stroke: #838bc5;
+        stroke-miterlimit: 10;
+        stroke-width: 1.7px;
+      }
+
+      .cls-5, .cls-7 {
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path class="cls-9" d="M32.2,44.4h60v60"/>
+  <path class="cls-9" d="M32.2,74.4h30v30"/>
+  <g>
+    <path class="cls-6" d="M112,102l7.2,2.4-7.2,2.4,1.2-2.4-1.2-2.4Z"/>
+    <path class="cls-6" d="M29.8,24.6l2.4-7.2,2.4,7.2-2.4-1.2s-2.4,1.2-2.4,1.2Z"/>
+    <path class="cls-8" d="M31.6,104.4h81.6"/>
+    <path class="cls-8" d="M32.2,23.4c.4,28,.4,56,0,83.6"/>
+    <line class="cls-8" x1="32.2" y1="106.6" x2="32.2" y2="102.1"/>
+    <line class="cls-8" x1="47.2" y1="106.6" x2="47.2" y2="102.1"/>
+    <line class="cls-8" x1="62.2" y1="106.6" x2="62.2" y2="102.1"/>
+    <line class="cls-8" x1="77.2" y1="106.6" x2="77.2" y2="102.1"/>
+    <line class="cls-8" x1="92.2" y1="106.6" x2="92.2" y2="102.1"/>
+    <line class="cls-8" x1="107.2" y1="106.6" x2="107.2" y2="102.1"/>
+    <line class="cls-8" x1="34.5" y1="104.4" x2="30" y2="104.4"/>
+    <line class="cls-8" x1="34.5" y1="89.4" x2="30" y2="89.4"/>
+    <line class="cls-8" x1="34.5" y1="74.4" x2="30" y2="74.4"/>
+    <line class="cls-8" x1="34.5" y1="59.4" x2="30" y2="59.4"/>
+    <line class="cls-8" x1="34.5" y1="44.4" x2="30" y2="44.4"/>
+    <line class="cls-8" x1="34.5" y1="29.4" x2="30" y2="29.4"/>
+  </g>
+  <g class="cls-4">
+    <g class="cls-4">
+      <text class="cls-2" transform="translate(30 12.4)"><tspan x="0" y="0">y</tspan></text>
+    </g>
+  </g>
+  <g class="cls-4">
+    <g class="cls-4">
+      <text class="cls-2" transform="translate(124.2 107.4)"><tspan x="0" y="0">x</tspan></text>
+    </g>
+  </g>
+  <circle class="cls-7" cx="32.2" cy="74.4" r="3.4"/>
+  <circle class="cls-7" cx="62.2" cy="104.4" r="3.4"/>
+  <circle class="cls-5" cx="32.2" cy="44.4" r="3.4"/>
+  <circle class="cls-5" cx="92.2" cy="104.4" r="3.4"/>
+  <g>
+    <g class="cls-4">
+      <g class="cls-4">
+        <text class="cls-3" transform="translate(2.2 73.1)"><tspan x="0" y="0">(0,1)</tspan></text>
+      </g>
+    </g>
+    <g class="cls-4">
+      <g class="cls-4">
+        <text class="cls-3" transform="translate(49.2 119.4)"><tspan x="0" y="0">(1,0)</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-4">
+        <g class="cls-4">
+          <text class="cls-1" transform="translate(2.2 47.9)"><tspan x="0" y="0">(0,2)</tspan></text>
+        </g>
+      </g>
+      <g class="cls-4">
+        <g class="cls-4">
+          <text class="cls-1" transform="translate(81.2 120.6)"><tspan x="0" y="0">(2,0)</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

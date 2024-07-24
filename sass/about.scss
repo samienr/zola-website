@@ -1,0 +1,45 @@
+.container
+{
+    width: min(840px, 90%);
+}
+#about-header {
+    display: flex;
+    align-items: center;
+
+        img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin-right: 1rem;
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: var(--shadow-raised);
+            }
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-style: italic;
+            font-weight: bold;
+        }
+}
+.hover {
+    display: inline-block;
+    transition: var(--transition-longer);
+}
+.hover:hover,
+.hovered {
+    transform: translate(6px, -6px);
+    color: #a1ddf4;
+    text-shadow:
+            -3px 3px 0 #1998d5,
+            -6px 6px 0 #ffe96b,
+            -9px 9px 0 #ee4043;
+}
+
+p
+{
+    font-family: "Source Code Pro";
+    line-height: 1.7;
+    font-weight: 400;
+}

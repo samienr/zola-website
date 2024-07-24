@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "partials/load_katex.html" -%}
+    {% include "partials/breadcrumbs.html" -%}
+	{%- include "partials/statements.html" -%}
+    
+    <h1>{{ page.title }}</h1>
+
+	{%- if page.extra.toc -%}
+		<h2>{{ macros_translate::translate(key="table_of_contents", default="Table of Contents", language_strings=language_strings) }}</h2>
+		<ul>
+			{%- for h1 in page.toc -%}
+				<li>
+					<a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+					{%- if h1.children -%}
+						<ul>
+							{%- for h2 in h1.children -%}
+								<li>
+									<a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					{%- endif -%}
+				</li>
+			{%- endfor -%}
+		</ul>
+	{%- endif -%}
+
+	{{ page.content | safe }}
+</article>
+
+{%- if page.lower or page.higher -%}
+	<hr />
+	<nav id="post-nav">
+		{%- if page.lower -%}
+			<a class="post-nav-item post-nav-prev" href="{{ page.lower.permalink }}">
+				<div class="nav-arrow">{{ macros_translate::translate(key="previous", default="Previous", language_strings=language_strings) }}</div>
+				<span class="post-title">{{ page.lower.title }}</span>
+			</a>
+		{%- endif -%}
+		{%- if page.higher -%}
+			<a class="post-nav-item post-nav-next" href="{{ page.higher.permalink }}">
+				<div class="nav-arrow">{{ macros_translate::translate(key="next", default="Next", language_strings=language_strings) }}</div>
+				<span class="post-title">{{ page.higher.title }}</span>
+			</a>
+		{%- endif -%}
+	</nav>
+{%- endif -%}
+
+<div class="dialog-buttons">
+	<a class="inline-button" href="#top">{{ macros_translate::translate(key="go_to_top", default="Go to Top", language_strings=language_strings) }}</a>
+	{%- if config.extra.issues_url -%}
+		<a class="inline-button colored external" href="{{ config.extra.issues_url }}">
+			{{- macros_translate::translate(key="file_an_issue", default="File an Issue", language_strings=language_strings) -}}
+		</a>
+	{%- endif -%}
+</div>
+{% endblock content %}

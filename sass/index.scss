@@ -1,0 +1,40 @@
+body {
+    text-align: center;
+        #home-splash {
+            h1 {
+                    margin-bottom: auto;
+                    transition: var(--transition-longer);
+                    color: var(--primary-color);
+                    font-style: italic;
+                    font-weight: bold;
+                    font-size: 4rem;
+                    &:hover {
+                            transform: translate(9px, -9px);
+                            color: #a1ddf4;
+                            text-shadow:
+                                    -3px 3px 0 #1998d5,
+                                    -6px 6px 0 #ffe96b,
+                                    -9px 9px 0 #ee4043;
+                    }
+            }
+        }
+
+        h2 {
+            margin: auto;
+            font-size: 0.875rem;
+            color: var(--fg-muted-5);
+            font-family: var(--font-system-ui);
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        pre a {
+            color: aliceblue;
+        }
+        #site-footer {
+            margin-top: auto;
+            nav {display: none;}
+        }
+}
+
+@media screen and (max-width:769px){.crt {font-size:14px;}}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include "partials/breadcrumbs.html" -%}
+<h1>{{ section.title }}</h1>
+
+{{ section.description | markdown | safe }}
+
+<div id="article-list">
+        {% for page in section.pages %}
+        <article>
+                <a class="link-page" href="{{ page.permalink | safe }}">{{ page.title }}</a>
+        </article>
+        {% endfor %}
+</div>
+{% endblock content %}

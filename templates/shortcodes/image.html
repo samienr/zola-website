@@ -1,0 +1,23 @@
+{% if url_min %}
+	<a href="{{ url }}">
+		<img class="
+			{% if full %}full{% endif %}
+			{% if pixels %}pixels{% endif %}
+			{% if transparent %}transparent{% endif %}
+			{% if not hover %}no-hover{% endif %}
+                        {% if svg %}svg{% endif %}
+		"
+		{% if alt %}alt="{{alt}}"{% endif %}
+		src="{{ url_min }}" />
+	</a>
+{% else %}
+	<img class="
+			{% if full %}full{% endif %}
+			{% if pixels %}pixels{% endif %}
+			{% if transparent %}transparent{% endif %}
+			{% if not hover %}no-hover{% endif %}
+                        {% if svg %}svg{% endif %}
+		"
+		{% if alt %}alt="{{alt}}"{% endif %}
+		src="{{ url }}" />
+{% endif %}
