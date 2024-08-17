@@ -5,7 +5,7 @@ date = "2024-06-14"
 [taxonomies]
 tags = ["Keyboards", "Electronics", "Projects"]
 [extra]
-toc = false
+toc = true
 banner = "keyboard.jpg"
 +++
 
@@ -13,7 +13,7 @@ I've been into custom mechanical keyboards for a while, but the absurdly high co
 
 I figured if I were going to design the keyboard entirely myself, I might as well make it as *custom* as possible. I was going to design this keyboard something *just for myself*.
 
-# Step 1: The Design
+# Design
 Within a few weeks of [snooping around online](https://reddit.com/r/ErgoMechKeyboards), I discovered a whole world of bizarrely-shaped, split keyboards. I very quickly became inspired by the [Lily58](https://github.com/kata0510/Lily58) and the [Corne](https://github.com/foostan/crkbd). I learned that the  motivation behind these strange layouts came from two goals that I had myself:
 1. Reducing finger movement
 2. Enhanced typing comfort
@@ -33,7 +33,7 @@ As for hardware, I chose:
 - **Kalih Choc Red switches** for their low profile and because I like linear switches
 
 ---
-# Step 2: Ergogen
+# Ergogen
 I needed a tool to design the layout and found [Ergogen](https://ergogen.cache.works/). , which uses a simple YAML format to create layouts. Thanks to [a helpful blog series by FlatFootFox](https://flatfootfox.com/ergogen-introduction/), I defined a 3x6 grid for keys on each hand, matching the finger positions I had determined on the iPad. The flexibility of YAML allowed me to easily tweak the layout until it felt and looked right. Here's a snippet of my Ergogen config:
 
 ```yaml
@@ -94,7 +94,7 @@ I used [Ceoloide's](https://github.com/ceoloide/ergogen-footprints/tree/main) fo
 <figcaption>Preview of layout generated in Ergogen</figcaption>
 
 ---
-# Step 3: PCB Design
+# PCB Design
 
 Ergogen generated a KiCad file with the board outline and switch footprints. I had to create and route the traces. Additionally, the footprint I used for the nRF52840 didn't account for its battery pads, so I had to modify the footprint by adding a small cutout to route battery wires through. I haven't messed around with PCBs before this besides some basic designs from school, so that was a nice learning experience. The supportive community on the [Absolem Club Discord server](https://discord.gg/kk4rXYkp4H) helped me through the process.
 
@@ -107,7 +107,7 @@ Ergogen generated a KiCad file with the board outline and switch footprints. I h
 Once all the electronics were in place, I decided to add some decorative patterns to the pcb, as I decided not to use a plate on this keyboard.
 {{ image(url="final_pcb.png") }}
 And with that, the PCB design was pretty much done. All that was left was ordering everything and putting it all together.
-# Step 4: Assembly and Firmware
+# Assembly and Firmware
 I ordered my PCB from [JLCPCB](https://jlcpcb.com/) in black and white for about 20 USD, the microcontroller from [SeeedStudio](https://www.seeedstudio.com/), and the other components from [Typeractive](https://typeractive.xyz/).
 
 I used my university's makerspace for soldering, learning about reflow soldering for smaller components.
@@ -167,8 +167,11 @@ I next decided to take a look at the PCB layout. This is where I found the culpr
 # Conclusion
 This project was a bit challenging but very rewarding, providing me with a custom mechanical keyboard tailored to my preferences. It was also my first truly original electronics project, and it taught me a lot about PCB design and soldering, all through practical hands-on experience. This project also helped in refining my independent problem-solving skills, as I am used to having either documentation or peers to take help from. I hope this inspires others to try their hand at DIY keyboard building!
 
+## Open Source (?)
+I've finally open sourced the keyboard design files on <a class="external" href="https://github.com/samienr/SOR-Hydrogen">this Github repository.</a> I haven't yet fixed the PCB routing mistake, though I do plan on getting to it eventually. It's just not a high priority at the moment. Feel free to do whatever you want with the designs, this project was more for the learning experience.
+
 # Next Steps
-I'm probably going to work on a case for the boards next. The goal as it stands now is to create a model for 3D printing just to protect the boards (and the surfaces I put them on), then to eventually design a case for CNC that holds the boards at the most comfortable angles for me.
+I'm probably going to work on a case for the boards next. The goal as it stands now is to create a model for 3D printing just to protect the boards (and the surfaces I put them on), then to eventually design a case for either CNC milling or resin printing that holds the boards at the most comfortable angles for me.
 
 {{ image(url="keyboard.jpg", hover=true) }}
 <figcaption>The completed product</figcaption>

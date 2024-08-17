@@ -1,0 +1,11 @@
+:root {
+    --bg-color: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+
+    @media (prefers-color-scheme: dark) {
+        --bg-color: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    }
+}
+
+body {
+  background: var(--bg-color), center / cover no-repeat fixed url("bg.png");
+}

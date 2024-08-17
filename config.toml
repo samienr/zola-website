@@ -39,6 +39,7 @@ source_url = "https://github.com/samienr/zola-website"
 stylesheets = [
    "footer.css",
    "typography.css",
+   "bg.css",
 ]
 ### TODO:: ADD THE JS SCRIPTS FROM THE HTML HEAD FROM THE OG
 # Additional JavaScript scripts; expects them to be in the "./static/" directory.
