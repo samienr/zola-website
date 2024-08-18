@@ -113,7 +113,9 @@ I ordered my PCB from [JLCPCB](https://jlcpcb.com/) in black and white for about
 I used my university's makerspace for soldering, learning about reflow soldering for smaller components.
 
 ## Keymap
-First, I defined the keymap. I opted for the Colemak-DH layout, as it was designed to be a more ergonomic layout that also allows for faster typing speeds. The other layers were designed by seeing various designs online and then just iterating.
+First, I defined the keymap. I opted for Colemak-DH, as it was designed to be a more ergonomic layout that also allows for faster typing speeds. The other layers were designed by seeing various designs online and then just iterating.
+
+I had initially set out to write the keymap directly to the ZMK keymap file, but I quickly found [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/), an online tool that can connect to a ZMK repository on GitHub and manage the keymaps with a very easy to use GUI. I used the tool to create these keymaps:
 
 {{ image(url="default_layer.png") }}
 <figcaption>Default layer</figcaption>
