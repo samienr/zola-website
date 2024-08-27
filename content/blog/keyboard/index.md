@@ -1,6 +1,6 @@
 +++
 title = "How I Designed My First Custom Keyboard"
-description = "A glimpse into my unorganized process"
+description = "How I went from not knowing anything about keyboard PCBs to designing one"
 date = "2024-06-14"
 [taxonomies]
 tags = ["Keyboards", "Electronics", "Projects"]
