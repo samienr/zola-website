@@ -1,4 +1,4 @@
 content/.obsidian
-public/
+#public/
 **/.DS_Store
 themes/.DS_Store
