@@ -47,8 +47,8 @@ show_backlinks = true
 
 [extra.nav]
 # Whether to show Atom/RSS feed button in the nav
-show_feed = true
-show_theme_switcher = true
+show_feed = false
+show_theme_switcher = false
 # Links used in the nav.
 # For local files use same link format as in Markdown,
 # i.e "@/blog/_index.md".
