@@ -1,4 +1,50 @@
+ @use "../themes/duckquill/sass/mods/modern-hr";
  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+  font-size: 1.05rem;
+ }
+.container {
+  width: min(730px, 90%);
+ }
+
+ @mixin theme-variables {
+   :root {
+     @content("light");
+   }
+
+   [data-theme="dark"] {
+     @content("dark");
+   }
+
+   @media (prefers-color-scheme: dark) {
+     :root:not([data-theme="light"]) {
+       @content("dark");
+     }
+   }
+ }
+
+@include theme-variables using ($theme) {
+   @if $theme =="dark" {
+     --orange-fg: rgb(255 175 85);
+   }
+   @else {
+     --orange-fg: #ee6132;
+   }
+ }
+
+
+h2 {
+    font-size: 1.8rem;
+}
+
+code:not(pre code) {
+        color: var(--orange-fg);
+}
+
+pre code {
+  font-size: .95em;
+}
 
 html
 {
@@ -9,7 +55,7 @@ html
 .colorize,
 colorize
 {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 hr
@@ -21,14 +67,6 @@ hr
     }
 }
 
-del {
-        box-shadow: none;
-        border-radius: 0;
-        background-color: transparent;
-        padding: 0;
-        color: inherit;
-    }
-
 #breadcrumb-container {
         opacity: 60%;
         font-size: .8rem;
@@ -39,12 +77,12 @@ del {
                 font-weight: 400;
                 font-family: var(--font-monospace-code);
                 &:hover {
-                        color: var(--primary-color);
+                        color: var(--accent-color);
                         transition: var(--transition);
                 }
         }
         #active-page {
-                color: var(--primary-color);
+                color: var(--accent-color);
                 &:hover {
                         opacity: 90%;
                 }

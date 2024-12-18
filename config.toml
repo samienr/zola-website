@@ -14,21 +14,20 @@ taxonomies = [{ name = "tags", feed = true }]
 
 [markdown]
 highlight_code = true
-highlight_theme = "css"
-highlight_themes_css = [
-  { theme = "rose-pine-dark", filename = "syntax-theme-dark.css" },
-  { theme = "rose-pine-light", filename = "syntax-theme-light.css" },
-]
-smart_punctuation = true
+highlight_theme = "nord"
+#highlight_theme = "css"
+#highlight_themes_css = [
+#  { theme = "rose-pine-dark", filename = "syntax-theme-dark.css" },
+#  { theme = "rose-pine-light", filename = "syntax-theme-light.css" },
+#]
+smart_punctuation = false
 
 [search]
 index_format = "elasticlunr_json"
 
 [extra]
-primary_color = "rgb(101, 143, 239)"
-primary_color_alpha = "rgba(101, 143, 239, .2)"
-primary_color_dark = "rgb(140, 170, 238)"
-primary_color_dark_alpha = "rgba(140, 170, 238, .2)"
+accent_color = "rgb(101, 143, 239)"
+accent_color_dark = "rgb(140, 170, 238)"
 emoji_favicon = false
 animated_favicon = false
 issues_url = "https://github.com/samienr/zola-website/issues"
@@ -36,22 +35,20 @@ source_url = "https://github.com/samienr/zola-website"
 
 # Additional CSS stylesheets; expects them to be in the "./static/" directory.
 # If you are using Sass it will be generated there automatically.
-stylesheets = [
+styles = [
    "footer.css",
    "typography.css",
-   "bg.css",
 ]
-### TODO:: ADD THE JS SCRIPTS FROM THE HTML HEAD FROM THE OG
-# Additional JavaScript scripts; expects them to be in the "./static/" directory.
-#scripts = [
-#  "katex.min.js",
-#]
 show_copy_button = true
-show_read_time = true
+show_reading_time = true
+show_backlinks = true
+
+#katex = true
 
 [extra.nav]
 # Whether to show Atom/RSS feed button in the nav
 show_feed = true
+show_theme_switcher = true
 # Links used in the nav.
 # For local files use same link format as in Markdown,
 # i.e "@/blog/_index.md".
@@ -72,5 +69,5 @@ show_copyright = true
 show_powered_by = false
 #show_source = true
 
-[extra.goatcounter]
-user = "samienr"
+#[extra.goatcounter]
+#user = "samienr"

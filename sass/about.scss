@@ -1,4 +1,5 @@
-.container
+@use "../themes/duckquill/sass/mods/classic-del";
+#main-content
 {
     width: min(840px, 90%);
 }
@@ -17,7 +18,7 @@
         }
 
         .highlight {
-            color: var(--primary-color);
+            color: var(--accent-color);
             font-style: italic;
             font-weight: bold;
         }
@@ -41,4 +42,5 @@ p
     font-family: "Source Code Pro";
     line-height: 1.7;
     font-weight: 400;
+    font-size: 16px;
 }

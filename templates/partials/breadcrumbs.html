@@ -1,14 +1,18 @@
 <div id="breadcrumb-container">
     <a class="breadcrumb-path" href="/">Home</a>
+
     {% set current = section | default(value=page) %}
     {% for ancestor in current.ancestors %}
-    {% if loop.first %}
-    {% continue %}
-    {% endif %}
-    <span class="breadcrumb-separator"> > </span>
-    {% set section = get_section(path=ancestor) %}
-    <a class="breadcrumb-path" href="{{ section.permalink }}">{{ section.title }}</a>
+        {% if loop.first %}
+            {% continue %}
+        {% endif %}
+        <span class="breadcrumb-separator"> > </span>
+        {% set section = get_section(path=ancestor) %}
+        <a class="breadcrumb-path" href="{{ section.permalink }}">{{ section.title }}</a>
     {% endfor %}
+
     <span class="breadcrumb-separator"> > </span>
-    <a id="active-page" class="breadcrumb-path active" href="{{ current.permalink }}">{{ current.title }}</a>
+
+    <a id="active-page" class="breadcrumb-path active">{{ current.title }}</a>
+
 </div>

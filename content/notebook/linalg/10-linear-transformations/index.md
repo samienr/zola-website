@@ -1,10 +1,12 @@
 +++
-title = "11 Linear Transformations"
+title = "10 Linear Transformations"
+[extra]
+katex = true
 +++
 
-{% katex() %}
+$$
 T: \mathbb{R}^n \to \mathbb{R}^m
-{% end %}
+$$
 <figcaption>A function/transformation that maps an input from one vector space into another.</figcaption>
 
 #### Properties
@@ -31,9 +33,9 @@ Every linear transformation $T$ can be represented as a matrix, such that $T(\ve
 ### Dilation <small>and contraction</small>
 Define $T: \mathbb{R}^2 \to \mathbb{R}^2$ as a dilation by a factor $k$:
 
-{% katex() %}
+$$
 T(\vec{v}) = k\vec{v} \text{ for } \vec{v} = \begin{bmatrix} x \\ y \end{bmatrix} \in \mathbb{R}^2.
-{% end %}
+$$
 
  $T(\vec{u}) = k\vec{u}$
 - **Addition**: $T(\vec{u} + \vec{v}) = k(\vec{u} + \vec{v}) = k\vec{u} + k\vec{v} = T(\vec{u}) + T(\vec{v}) \\; \checkmark$
@@ -41,12 +43,12 @@ T(\vec{v}) = k\vec{v} \text{ for } \vec{v} = \begin{bmatrix} x \\ y \end{bmatrix
 
 Matrix representation:
 
-{% katex() %}
+$$
 A = \begin{bmatrix}
 k & 0 \\
 0 & k
 \end{bmatrix}
-{% end %}
+$$
 
 {{ image(url='dilation.svg', transparent=true, svg=true) }}
 <figcaption>Points (0,1) and (1,0) dilated by a factor of 2.</figcaption>

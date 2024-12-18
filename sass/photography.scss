@@ -1,10 +1,13 @@
-.container {
-    width: min(840px, 90%);
+#main-content {
+  width: min(840px,90%);
 }
 
 img.gallery-photo {
     display: unset;
     margin: unset;
+    &:hover {
+      border-radius: 0;
+  }
 }
 
 .gallery {

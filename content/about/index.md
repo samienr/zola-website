@@ -1,11 +1,11 @@
 +++
 title = "About"
 [extra]
-stylesheets = ["about.css"]
+styles = ["about.css"]
 +++
 <div id="about-header">
 
-# Hi, <span class="highlight">I'm <span class="hover">Samien.</span></span><br>I like <del class="hovered">breaking</del> <span class="highlight">making things.</span>
+## Hi, <span class="highlight">I'm <span class="hover">Samien.</span></span><br>I like <del class="hovered">breaking</del> <span class="highlight">making things.</span>
 {{ image(url="memoji.png", alt="This is kind of what I look like!", transparent=true) }}
 </div>
 

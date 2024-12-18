@@ -8,11 +8,11 @@
 {{ section.description | markdown | safe }}
 
 <div class="statement-container disclaimer">
-        <strong class="big">
+        <strong class="title">
                 <i class="icon"></i>
-                {{-macros_translate::translate(key="disclaimer", default="Disclaimer", language_strings=language_strings) -}}
+                Disclaimer
         </strong>
-        {{ section.extra.disclaimer | markdown | safe }}
+<p>These are taken from the notes <strong>I</strong> took in class. They are certain to have errors and incomplete sections. Do not take <strong>anything</strong> here as fact.</p>
 </div>
 
 {{ section.content | safe }}
