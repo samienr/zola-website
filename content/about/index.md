@@ -5,14 +5,14 @@ styles = ["about.css"]
 +++
 <div id="about-header">
 
-## Hi, <span class="highlight">I'm <span class="hover">Samien.</span></span><br>I like <del class="hovered">breaking</del> <span class="highlight">making things.</span>
+## Hi, I'm <span class="highlight"><span class="hover">Samien.</span></span><br>I like <del class="hovered">breaking</del> <span class="highlight">making things.</span>
 {{ image(url="memoji.png", alt="This is kind of what I look like!", transparent=true) }}
 </div>
 
 ---
 I'm currently working on my Bachelor's degree in <colorize class="hover">Electrical and Computer Engineering</colorize>.
 
-I am currently interested in <colorize>computer architecture</colorize>, <colorize>RF,</colorize> and <colorize>signal processing.</colorize>
+I am currently interested in <colorize>computer architecture</colorize> and <colorize>embedded systems.</colorize>
 
 I enjoy [photography](@/photography/index.md), designing+building ergonomic [keyboards](../tags/keyboards/), and maintaining my <colorize>homelab</colorize>. I also started looking into <colorize>reverse engineering</colorize> and <colorize>hardware hacking</colorize>, which I've been having a lot of fun with.
 
