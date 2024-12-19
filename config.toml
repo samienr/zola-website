@@ -38,6 +38,7 @@ source_url = "https://github.com/samienr/zola-website"
 styles = [
    "footer.css",
    "typography.css",
+   "notebook.css",
 ]
 show_copy_button = true
 show_reading_time = true

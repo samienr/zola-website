@@ -6,11 +6,12 @@
 
 {{ section.description | markdown | safe }}
 
-<div id="article-list">
+<div id="nb-list">
         {% for page in section.pages %}
-        <article>
-                <a class="link-page" href="{{ page.permalink | safe }}">{{ page.title }}</a>
-        </article>
+        <nb-entry>
+        <a class="link-page" href="{{ page.permalink | safe }}"></a>
+        <h2>{{ page.title }}</h2>
+        </nb-entry>
         {% endfor %}
 </div>
 {% endblock content %}

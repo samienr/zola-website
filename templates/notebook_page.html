@@ -47,12 +47,4 @@
 	</nav>
 {%- endif -%}
 
-<div class="dialog-buttons">
-	<a class="inline-button" href="#top">{{ macros_translate::translate(key="go_to_top", default="Go to Top", language_strings=language_strings) }}</a>
-	{%- if config.extra.issues_url -%}
-		<a class="inline-button colored external" href="{{ config.extra.issues_url }}">
-			{{- macros_translate::translate(key="file_an_issue", default="File an Issue", language_strings=language_strings) -}}
-		</a>
-	{%- endif -%}
-</div>
 {% endblock content %}

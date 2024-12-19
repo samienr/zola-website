@@ -17,12 +17,13 @@
 
 {{ section.content | safe }}
 
-<div id="article-list">
+<div id="nb-list">
         {% for s in section.subsections %}
         {% set subsection = get_section(path=s, metadata_only=true) %}
-        <article>
-                <a class="link-page" href="{{ subsection.permalink | safe }}">{{ subsection.title }}</a>
-        </article>
+        <nb-entry>
+                <a class="link-page" href="{{ subsection.permalink | safe }}"></a>
+                <h3>{{ subsection.title }}</h3>
+        </nb-entry>
         {% endfor %}
 </div>
 
