@@ -88,3 +88,17 @@ hr
                 }
         }
 }
+
+.hoverglitch {
+    display: inline-block;
+    transition: var(--transition-longer);
+}
+.hoverglitch:hover,
+.glitched {
+    transform: translate(6px, -6px);
+    color: #a1ddf4;
+    text-shadow:
+            -3px 3px 0 #1998d5,
+            -6px 6px 0 #ffe96b,
+            -9px 9px 0 #ee4043;
+}

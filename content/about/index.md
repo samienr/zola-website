@@ -1,16 +1,16 @@
 +++
 title = "About"
 [extra]
-styles = ["about.css"]
+styles = ["about.css", "widebody.css"]
 +++
 <div id="about-header">
 
-## Hi, I'm <span class="highlight"><span class="hover">Samien.</span></span><br>I like <del class="hovered">breaking</del> <span class="highlight">making things.</span>
+## Hi, I'm Samien.<br>I like <del class="glitched">breaking</del> <span class="highlight">making things.</span>
 {{ image(url="memoji.png", alt="This is kind of what I look like!", transparent=true) }}
 </div>
 
 ---
-I'm currently working on my Bachelor's degree in <colorize class="hover">Electrical and Computer Engineering</colorize>.
+I'm currently working on my Bachelor's degree in <colorize class="hoverglitch">Electrical and Computer Engineering</colorize>.
 
 I am currently interested in <colorize>computer architecture</colorize> and <colorize>embedded systems.</colorize>
 

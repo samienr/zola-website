@@ -64,6 +64,7 @@ links = [
 links = [
       { url = "@/notebook/_index.md", name = "Notebook" },
       { url = "@/photography/index.md", name = "Photography" },
+      { url = "@/resume/index.md", name = "Resume" },
 ]
 
 show_copyright = true
