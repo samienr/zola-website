@@ -3,6 +3,8 @@ title = "Resume"
 extra.styles = ["widebody.css"]
 +++
 
+A full PDF of my resume can be found [here](Resume.pdf).
+
 If you are interested in any additional details, please feel free to [reach out](../contact).
 
 # <colorize>__Projects__</colorize>
