@@ -24,40 +24,73 @@
         <id>https://samienr.com/blog/soundhax/</id>
         
         <content type="html" xml:base="https://samienr.com/blog/soundhax/">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;soundhax.com&quot;&gt;SoundHax&lt;&#x2F;a&gt; was one of the most accessible exploits to get unsigned code running on the Nintendo 3DS. It worked by abusing a bug found in the &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application with a specially-crafted &lt;code&gt;.m4a&lt;&#x2F;code&gt; file.&lt;&#x2F;p&gt;
-&lt;p&gt;The exploit is special as it was the first exploit on the 3DS that was free, offline, and worked on every version of the firmware as of when SoundHax was launched.&lt;&#x2F;p&gt;
-&lt;p&gt;To fully appreciate this brilliant symphony of hacks, a basic understanding of &lt;a href=&quot;https:&#x2F;&#x2F;samienr.com&#x2F;blog&#x2F;soundhax&#x2F;memory&quot;&gt;memory management&lt;&#x2F;a&gt; is recommended.&lt;&#x2F;p&gt;
+&lt;p&gt;The exploit was special as it was the first exploit on the 3DS that was free, offline, and worked on every version of the firmware as of when it was discovered.&lt;&#x2F;p&gt;
+&lt;p&gt;To fully appreciate this brilliant symphony of hacks, a basic understanding of memory management is recommended. I wrote a quick and dirty explainer &lt;a href=&quot;https:&#x2F;&#x2F;samienr.com&#x2F;blog&#x2F;soundhax&#x2F;memory&quot;&gt;over here&lt;&#x2F;a&gt; if you want a fast refresher.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;small&gt;Before proceeding, I&#x27;d also highly suggest reading the writeup on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nedwill&#x2F;soundhax?tab=readme-ov-file#writeup&quot;&gt;Nedwill&#x27;s GitHub page&lt;&#x2F;a&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
-&lt;h2 id=&quot;the-vulnerability&quot;&gt;The Vulnerability&lt;&#x2F;h2&gt;
-&lt;p&gt;At its core, SoundHax exploits a bug in how the 3DS Sound application handles MP4 atom tags:&lt;&#x2F;p&gt;
-&lt;ol&gt;
-&lt;li&gt;A 256-byte buffer is allocated for song names (the maxsize according to the MP4 spec).
+&lt;h1 id=&quot;the-vulnerability&quot;&gt;The Vulnerability&lt;&#x2F;h1&gt;
+&lt;p&gt;For context, the M4A format uses the MP4 file formt. At its core, SoundHax exploits a bug in how the &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application handles MP4 atom tags.&lt;&#x2F;p&gt;
+&lt;p&gt;That is, when loading in an M4A file, a 256-byte buffer is allocated on the heap for song names (the max size according to the MP4 spec).
+The song name is then copied from the file into the buffer using one of two functions:&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;The song name is then copied from the file into the buffer using one of two functions.&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;&#x2F;li&gt;
 &lt;li&gt;For ASCII strings, &lt;code&gt;strncpy(dst, src, 256)&lt;&#x2F;code&gt; is used, which is safe.&lt;&#x2F;li&gt;
-&lt;li&gt;For Unicode strings, &lt;code&gt;memcpy&lt;&#x2F;code&gt; is used, which &lt;strong&gt;takes a user-provided size&lt;&#x2F;strong&gt; instead of 256 &lt;small&gt;(not safe!)&lt;&#x2F;small&gt;.&lt;&#x2F;li&gt;
-&lt;&#x2F;ol&gt;
-&lt;p&gt;This was likely because &lt;code&gt;strncpy&lt;&#x2F;code&gt; stops at the first null terminating byte &lt;small&gt;(which works for ASCII strings)&lt;&#x2F;small&gt;. As Unicode can have null bytes as parts of characters, &lt;code&gt;strncpy&lt;&#x2F;code&gt; wouldn&#x27;t work well.&lt;&#x2F;p&gt;
-&lt;p&gt;Instead, song names are simply gathered by copying over as many bytes as the file specifies, even if the number is greater than 256.&lt;&#x2F;p&gt;
+&lt;li&gt;For Unicode strings, &lt;code&gt;memcpy()&lt;&#x2F;code&gt; is used, which &lt;strong&gt;takes a user-provided size&lt;&#x2F;strong&gt; instead of 256 &lt;small&gt;(not safe!)&lt;&#x2F;small&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Unicode strings likely didn&#x27;t use &lt;code&gt;strncpy()&lt;&#x2F;code&gt; because it stops at the first null terminating byte &lt;small&gt;(which is used for marking the end of an ASCII string)&lt;&#x2F;small&gt;. Unicode can have null bytes as parts of characters, which means that &lt;code&gt;strncpy()&lt;&#x2F;code&gt; wouldn&#x27;t work well.&lt;&#x2F;p&gt;
+&lt;p&gt;Instead, song names are simply gathered by copying over as many bytes as the file specifies, &lt;strong&gt;even if the number is greater than 256.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;This means that the program code is vulnerable to a &lt;colorize&gt;&lt;strong&gt;buffer overflow attack.&lt;&#x2F;strong&gt;&lt;&#x2F;colorize&gt;
-By providing a carefully crafted Unicode title longer than 256 bytes, an attacker can write data beyond the allocated buffer and into other parts of console memory.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;the-exploit-chain&quot;&gt;The Exploit Chain&lt;&#x2F;h3&gt;
+By providing a carefully crafted Unicode title longer than 256 bytes, an attacker can write data &lt;strong&gt;beyond the allocated buffer and into other parts of console memory.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-exploit&quot;&gt;The Exploit&lt;&#x2F;h1&gt;
 &lt;p&gt;Taking advantage of this bug, we can get arbitrary code execution on the 3DS using the following steps:&lt;&#x2F;p&gt;
 &lt;ol&gt;
-&lt;li&gt;Crafted M4A file with oversized Unicode title&lt;&#x2F;li&gt;
-&lt;li&gt;Buffer overflow in heap&lt;&#x2F;li&gt;
-&lt;li&gt;Heap manipulation (fake chunk creation)&lt;&#x2F;li&gt;
-&lt;li&gt;Unlink exploitation&lt;&#x2F;li&gt;
-&lt;li&gt;Arbitrary write primitive&lt;&#x2F;li&gt;
-&lt;li&gt;ROP chain setup&lt;&#x2F;li&gt;
-&lt;li&gt;gspwn GPU exploit&lt;&#x2F;li&gt;
-&lt;li&gt;Code execution&lt;&#x2F;li&gt;
+&lt;li&gt;Creating an M4A file with an oversized Unicode title&lt;&#x2F;li&gt;
+&lt;li&gt;Causing a Buffer Overflow in the Heap&lt;&#x2F;li&gt;
+&lt;li&gt;Corrupting the Heap Metadata&lt;&#x2F;li&gt;
+&lt;li&gt;Unlink Exploitation&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;p&gt;Anyways, here&#x27;s how it works.&lt;&#x2F;p&gt;
-&lt;h1 id=&quot;1-attack-plan&quot;&gt;1. Attack Plan&lt;&#x2F;h1&gt;
-&lt;p&gt;The goal is to create a specially crafted &lt;code&gt;.m4a&lt;&#x2F;code&gt; &quot;audio&quot; file with an oversized Unicode title to overflow the heap.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-crafting-the-malicious-file&quot;&gt;1. Crafting the malicious File&lt;&#x2F;h2&gt;
+&lt;p&gt;The exploit begins with the construction of a M4A file containing a specially crafted Unicode title that&#x27;s intentionally oversized. Nedwil used a Python script to do this:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2e3440;color:#d8dee9;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;# Start with some text for the song title: &amp;quot;3 nedwill 2016&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;title &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00 \x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;e&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;w&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;# Add a bunch of zeros to make the title 772 bytes long
+&lt;&#x2F;span&gt;&lt;span&gt;title &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;+= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span&gt;((&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;772&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#88c0d0;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;(title)) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;&#x2F; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;# Way bigger than 256 bytes!
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This creates a 772 byte string for the title. But this alone isn&#x27;t enough.&lt;&#x2F;p&gt;
+&lt;p&gt;The MP4 file format needs each piece of data to be labeled with its exact size. In other words, we also need the file metadata to tell the 3DS how long this title is. When the rest of this Python script builds the final M4A file, it calculates the length of our oversized title and embeds it as binary data into the file header, like any other MP4 file is structured.&lt;&#x2F;p&gt;
+&lt;p&gt;The file isn&#x27;t lying about anything, it genuinely contains 772 bytes of title data, properly labeled and all. It&#x27;s just that 772 bytes is &lt;em&gt;way too many&lt;&#x2F;em&gt; bytes for a title, and it goes well over the allocated space of 256 bytes. This means that the rest of the 516 bytes end up writing over other regions of memory.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-triggering-the-heap-overflow&quot;&gt;2. Triggering the Heap Overflow&lt;&#x2F;h2&gt;
+&lt;p&gt;When the &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application encounters our special file, it will read the size field in the file metadata, sees &quot;772 bytes of title data,&quot; and trustingly pass this value to the &lt;code&gt;memcpy()&lt;&#x2F;code&gt; function without questioning whether 772 bytes is a reasonable length for a song title.&lt;&#x2F;p&gt;
+&lt;p&gt;When this happens, the 3DS:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;allocates the standard 256-byte buffer.&lt;&#x2F;li&gt;
+&lt;li&gt;uses &lt;code&gt;memcpy&lt;&#x2F;code&gt; with our provided length.&lt;&#x2F;li&gt;
+&lt;li&gt;copies our oversized title, writing beyond the buffer&#x27;s boundaries&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;3-heap-manipulation-and-unlink-exploitation&quot;&gt;3. Heap Manipulation and Unlink Exploitation&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;heap-manipulation&quot;&gt;Heap Manipulation&lt;&#x2F;h3&gt;
+&lt;p&gt;The heap overflow allows us to manipulate the heap&#x27;s metadata structures. Modern heap implementations maintain information about memory chunks, including:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chunk sizes&lt;&#x2F;li&gt;
+&lt;li&gt;Usage status&lt;&#x2F;li&gt;
+&lt;li&gt;Forward&#x2F;backward pointers&lt;&#x2F;li&gt;
+&lt;li&gt;Boundary tags&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;By overflowing into these structures, we can override some of this metadata and fool the heap manager into operating using this fake data. If you&#x27;re a little confused, &lt;a href=&quot;https:&#x2F;&#x2F;samienr.com&#x2F;blog&#x2F;soundhax&#x2F;memory#heap-overflow&quot;&gt;take a look at this&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;unlink-exploitation&quot;&gt;Unlink Exploitation&lt;&#x2F;h3&gt;
+&lt;p&gt;When the heap manager needs to free a chunk, it performs an &quot;unlink&quot; operation to remove the chunk from its internal data structures and possibly also merge it with adjacent free chunks.&lt;&#x2F;p&gt;
+&lt;p&gt;Part of this operation involves updating the forward and backward pointers of a chunk. This process assumes that the chunk metadata is trustworthy. Our fake chunk exploits this trust to achieve arbitrary memory writes.&lt;&#x2F;p&gt;
+&lt;p&gt;This typically looks something like this:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;C&quot; style=&quot;background-color:#2e3440;color:#d8dee9;&quot; class=&quot;language-C &quot;&gt;&lt;code class=&quot;language-C&quot; data-lang=&quot;C&quot;&gt;&lt;span&gt;chunk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;fd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;bk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; chunk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;bk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;chunk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;bk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;fd &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; chunk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;fd&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eceff4;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The allocator pretty much goes &quot;if this chunk says its next chunk is at address X, then I&#x27;ll update the chunk at address X to point back to the previous chunk.&quot; Except we are in control of those addresses. That is to say, we choose what address X is, and we control what the previous chunk&#x27;s address is, so we can make the allocator write an arbitrary value to an arbitrary location, A.K.A. an arbitrary write primitive.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-stack-manipulation-heap-feng-shui&quot;&gt;4. Stack Manipulation | &quot;Heap Feng Shui&quot;&lt;&#x2F;h2&gt;
+&lt;p&gt;With control over the unlink operation, we can write to any memory location. However, this power must be wielded strategically. The SoundHax exploit uses a technique known as &lt;em&gt;heap feng shui&lt;&#x2F;em&gt; to gain control over the program&#x27;s execution stack.&lt;&#x2F;p&gt;
+&lt;p&gt;The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwil had to painstakingly find a particular address that&#x27;s contents look like a valid heap chunk with seemingly proper heap chunk metadata values&lt;&#x2F;p&gt;
+&lt;p&gt;We use our arbitrary write primitive to overwrite the heap&#x27;s free list header with this stack address (via the unlick exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack &quot;chunk&quot; as the primary candidate for the next allocation.&lt;&#x2F;p&gt;
+&lt;p&gt;When the program makes its next &lt;code&gt;malloc()&lt;&#x2F;code&gt; call, the heap allocator searches through the free list looking for a suitable block. It finds our fake chunk on the stack, validates that it has enough space and proper metadata, and then returns the stack address as if it were heap memory.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-rop-chain-construction-and-execution&quot;&gt;5. ROP Chain Construction and Execution&lt;&#x2F;h2&gt;
 </content>
         
     </entry>

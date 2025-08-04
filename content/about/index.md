@@ -24,9 +24,9 @@ I started this website to share whatever I learn with the world. Hopefully it of
 
 If you have any inquiries or would just like to say hello, feel free to [reach out!](../contact) I'd love to hear from you.
 
----
-## Current Reading:
-Recently, I've started reading more as opposed to doomscrolling on social media. Here are some books I'm working through:
+<!-->---</!-->
+<!-->## Current Reading:</!-->
+<!-->Recently, I've started reading more as opposed to doomscrolling on social media. Here are some books I'm working through:</!-->
 
-- <colorize>*Practical Cryptography,*</colorize> by Bruce Schneier and Niels Ferguson
-- <colorize>*Mistborn: The Final Empire,*</colorize> by Brandon Sanderson
+<!-->- <colorize>*Practical Cryptography,*</colorize> by Bruce Schneier and Niels Ferguson</!-->
+<!-->- <colorize>*Mistborn: The Final Empire,*</colorize> by Brandon Sanderson</!-->

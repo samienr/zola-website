@@ -175,7 +175,7 @@ Let's say the program takes text input, and we fill and overflows the buffer wit
 +------------------------+ <- Lower memory address
 ```
 
-### Overflow on the Heap
+### Overflow on the Heap {#heap-overflow}
 We can do something similar on the heap. If we're smart about it, we can trick the computer into executing code in locations it originally was not meant to. 
 
 **Heap before overflow**
@@ -238,7 +238,7 @@ We can do something similar on the heap. If we're smart about it, we can trick t
 +------------------------+
 ```
 
-Since we know how the heap is structured, we can abuse this by creating a fake chunk header after overflowing Chunk A to trick the computer into reading our made up data as the metadata for Chunk B.
+Since we know how the heap is structured, we can abuse this by creating a fake chunk header after overflowing Chunk A to trick the computer into reading our made up data as the metadata for another chunk.
 ```
 +------------------------+
 |    Chunk A (in use)    |
@@ -249,11 +249,7 @@ Since we know how the heap is structured, we can abuse this by creating a fake c
 |  |    User Data     |  |
 |  |                  |  |
 |  |------------------|  |
-|  | Fake Chunk Header|  |
-|  | size: 0x100      |  |
-|  | prev_size: 0x200 |  |
-|  | next: 0xAABBCCDD |  |
-|  | prev: 0x11223344 |  |
+|  |   Overflow Data  |  |
 +------------------------+
 |    Chunk B (free)      |
 |  +------------------+  |
