@@ -68,4 +68,4 @@ links = [
 ]
 
 show_copyright = true
-show_powered_by = true
+#show_powered_by = true

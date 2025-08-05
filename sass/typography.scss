@@ -97,8 +97,20 @@ hr
 .glitched {
     transform: translate(6px, -6px);
     color: #a1ddf4;
+    transition: var(--transition);
     text-shadow:
             -3px 3px 0 #1998d5,
             -6px 6px 0 #ffe96b,
             -9px 9px 0 #ee4043;
+}
+
+
+.hoverglitch:active,
+.glitched:active {
+    transform: translate(0px, -6px);
+    color: #a1ddf4;
+    text-shadow:
+            1px 1px 0 #1998d5,
+            2px 2px 0 #ffe96b,
+            3px 3px 0 #ee4043;
 }

@@ -2,8 +2,6 @@
 title = "Contact"
 +++
 
-# Reach Me!
-
 Feel free to send me a message on either of these. Whether you’ve got something to say or if you're just bored, I’m always open!
 
 - [Discord](https://discord.com/users/227603019473223680)
