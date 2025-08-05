@@ -3,7 +3,7 @@
     <channel>
       <title>samienr - Projects</title>
       <link>https://samienr.com</link>
-      <description>Nerd</description>
+      <description>Electrical Nerd + Digital Artist</description>
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://samienr.com/tags/projects/rss.xml" rel="self" type="application/rss+xml"/>

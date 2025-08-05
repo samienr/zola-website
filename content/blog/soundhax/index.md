@@ -94,3 +94,6 @@ We use our arbitrary write primitive to overwrite the heap's free list header wi
 When the program makes its next `malloc()` call, the heap allocator searches through the free list looking for a suitable block. It finds our fake chunk on the stack, validates that it has enough space and proper metadata, and then returns the stack address as if it were heap memory.
 
 ## 5. ROP Chain Construction and Execution
+With step 4, the application writes data to what it thinks is allocated heap memory, but it's actually writing to the program's execution stack. Since the stack contains values such return addresses and the local variables of functions, we now have access to control the program's execution flow.
+
+Unfortunately for us, however, we can't go ahead and just write in instructions (also known as shellcode) just yet. Modern systems, such as the one the 3DS uses

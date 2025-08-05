@@ -3,7 +3,7 @@
     <channel>
       <title>samienr</title>
       <link>https://samienr.com</link>
-      <description>Nerd</description>
+      <description>Electrical Nerd + Digital Artist</description>
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://samienr.com/rss.xml" rel="self" type="application/rss+xml"/>
@@ -82,6 +82,8 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;p&gt;We use our arbitrary write primitive to overwrite the heap&#x27;s free list header with this stack address (via the unlick exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack &quot;chunk&quot; as the primary candidate for the next allocation.&lt;&#x2F;p&gt;
 &lt;p&gt;When the program makes its next &lt;code&gt;malloc()&lt;&#x2F;code&gt; call, the heap allocator searches through the free list looking for a suitable block. It finds our fake chunk on the stack, validates that it has enough space and proper metadata, and then returns the stack address as if it were heap memory.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;5-rop-chain-construction-and-execution&quot;&gt;5. ROP Chain Construction and Execution&lt;&#x2F;h2&gt;
+&lt;p&gt;With step 4, the application writes data to what it thinks is allocated heap memory, but it&#x27;s actually writing to the program&#x27;s execution stack. Since the stack contains values such return addresses and the local variables of functions, we now have access to control the program&#x27;s execution flow.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately for us, however, we can&#x27;t go ahead and just write in instructions (also known as shellcode) just yet. Modern systems, such as the one the 3DS uses&lt;&#x2F;p&gt;
 </description>
       </item>
       <item>

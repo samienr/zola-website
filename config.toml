@@ -1,6 +1,6 @@
 title = "samienr"
 base_url = "https://samienr.com"
-description = "Nerd"
+description = "Electrical Nerd + Digital Artist"
 theme = "duckquill"
 
 compile_sass = true
@@ -55,21 +55,17 @@ show_theme_switcher = true
 # i.e "@/blog/_index.md".
 # See https://www.getzola.org/documentation/content/linking/#internal-links
 links = [
-  { url = "@/about/index.md", name = "About" },
+  { url = "@/photography/index.md", name = "Gallery" },
   { url = "@/blog/_index.md", name = "Blog" },
   { url = "@/contact.md", name = "Contact" },
 ]
 
 [extra.footer]
 links = [
-      { url = "@/notebook/_index.md", name = "Notebook" },
-      { url = "@/photography/index.md", name = "Photography" },
-      { url = "@/resume/index.md", name = "Resume" },
+  { url = "/tags/projects", name = "Projects" },
+  { url = "@/notebook/_index.md", name = "Notebook" },
+  { url = "@/resume/index.md", name = "Resume" },
 ]
 
 show_copyright = true
-show_powered_by = false
-#show_source = true
-
-#[extra.goatcounter]
-#user = "samienr"
+show_powered_by = true
