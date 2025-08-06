@@ -16,7 +16,7 @@ I like </span> <del class="glitched"> breaking</del> making things.
 {{ image(url="/memoji.png", alt="This is kind of what I look like!", transparent=true) }}
 </div>
 
-I'm studying <colorize>Electrical and Computer Engineering</colorize> at the <span style="color: #bf5700;">***UT Austin***</span> with a focus in <colorize>computer architecture</colorize> and <colorize>embedded systems.</colorize>
+I'm studying <colorize>Electrical and Computer Engineering</colorize> at <span style="color: #bf5700;">***UT Austin***</span> with a focus in <colorize>computer architecture</colorize> and <colorize>embedded systems.</colorize>
 
 I enjoy [photography,](@/photography/index.md) [mechanical keyboards,](../tags/keyboards/) and maintaining my homelab.
 

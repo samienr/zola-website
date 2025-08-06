@@ -7,6 +7,7 @@ tags = ["Keyboards", "Electronics", "Projects"]
 [extra]
 toc = true
 banner = "keyboard.jpg"
+featured = true
 +++
 
 I've been into custom mechanical keyboards for a while, but the absurdly high costs and long wait times for parts pushed me towards a different solution: designing and building a keyboard myself. As a college student, affordability and quick access are key, and the custom keyboard is just the opposite of that, so I decided to take on this project myself.

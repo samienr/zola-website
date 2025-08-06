@@ -2,8 +2,8 @@
 title = "How The Nintendo 3DS Was Hacked Using a Music File"
 date = "2025-08-06"
 description = "A deep dive into the SoundHax exploit"
-[extra]
-toc = true
+[taxonomies]
+tags = ["Console modding", "Computers", "Hacks"]
 +++
 
 [SoundHax](https://soundhax.com) was one of the most accessible exploits to get unsigned code running on the Nintendo 3DS. It worked by abusing a bug found in the *Nintendo 3DS Sound* application with a specially-crafted `.m4a` file.
