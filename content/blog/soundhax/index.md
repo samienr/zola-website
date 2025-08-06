@@ -67,7 +67,7 @@ When the *Nintendo 3DS Sound* application encounters our special file, it will r
 
 When this happens, the 3DS:
 1. allocates the standard 256-byte buffer.
-2. uses `memcpy` with our provided length.
+2. uses `memcpy()` with our provided length.
 3. copies our oversized title, writing beyond the buffer's boundaries
 
 ## 3. Heap Manipulation and Unlink Exploitation
@@ -97,7 +97,7 @@ With control over the unlink operation, we can write to any memory location. How
 
 The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwill had to painstakingly find a particular address that's contents look like a valid heap chunk with seemingly proper heap chunk metadata values
 
-We use our arbitrary write primitive to overwrite the heap's free list header with this stack address (via the unlick exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack "chunk" as the primary candidate for the next allocation.
+We use our arbitrary write primitive to overwrite the heap's free list header with this stack address (via the unlink exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack "chunk" as the primary candidate for the next allocation.
 
 When the program makes its next `malloc()` call, the heap allocator searches through the free list looking for a suitable block. It finds our fake chunk on the stack, validates that it has enough space and proper metadata, and then returns the stack address as if it were heap memory.
 

@@ -74,7 +74,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;p&gt;When this happens, the 3DS:&lt;&#x2F;p&gt;
 &lt;ol&gt;
 &lt;li&gt;allocates the standard 256-byte buffer.&lt;&#x2F;li&gt;
-&lt;li&gt;uses &lt;code&gt;memcpy&lt;&#x2F;code&gt; with our provided length.&lt;&#x2F;li&gt;
+&lt;li&gt;uses &lt;code&gt;memcpy()&lt;&#x2F;code&gt; with our provided length.&lt;&#x2F;li&gt;
 &lt;li&gt;copies our oversized title, writing beyond the buffer&#x27;s boundaries&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;h2 id=&quot;3-heap-manipulation-and-unlink-exploitation&quot;&gt;3. Heap Manipulation and Unlink Exploitation&lt;&#x2F;h2&gt;
@@ -98,7 +98,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;h2 id=&quot;4-stack-manipulation-heap-feng-shui&quot;&gt;4. Stack Manipulation | &quot;Heap Feng Shui&quot;&lt;&#x2F;h2&gt;
 &lt;p&gt;With control over the unlink operation, we can write to any memory location. However, this power must be wielded strategically. The SoundHax exploit uses a technique known as &lt;em&gt;heap feng shui&lt;&#x2F;em&gt; to gain control over the program&#x27;s execution stack.&lt;&#x2F;p&gt;
 &lt;p&gt;The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwill had to painstakingly find a particular address that&#x27;s contents look like a valid heap chunk with seemingly proper heap chunk metadata values&lt;&#x2F;p&gt;
-&lt;p&gt;We use our arbitrary write primitive to overwrite the heap&#x27;s free list header with this stack address (via the unlick exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack &quot;chunk&quot; as the primary candidate for the next allocation.&lt;&#x2F;p&gt;
+&lt;p&gt;We use our arbitrary write primitive to overwrite the heap&#x27;s free list header with this stack address (via the unlink exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack &quot;chunk&quot; as the primary candidate for the next allocation.&lt;&#x2F;p&gt;
 &lt;p&gt;When the program makes its next &lt;code&gt;malloc()&lt;&#x2F;code&gt; call, the heap allocator searches through the free list looking for a suitable block. It finds our fake chunk on the stack, validates that it has enough space and proper metadata, and then returns the stack address as if it were heap memory.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;5-rop-chain-construction-and-execution&quot;&gt;5. ROP Chain Construction and Execution&lt;&#x2F;h2&gt;
 &lt;p&gt;With step 4, the application writes data to what it thinks is allocated heap memory, but it&#x27;s actually writing to the program&#x27;s execution stack. Since the stack contains values such return addresses and the local variables of functions, we now have access to control the program&#x27;s execution flow.&lt;&#x2F;p&gt;
