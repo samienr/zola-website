@@ -113,7 +113,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
                         
 		&quot;
 		alt=&quot;An example of the cut-up technique&quot;
-		src=&quot;https:&amp;#x2F;&amp;#x2F;upload.wikimedia.org&amp;#x2F;wikipedia&amp;#x2F;commons&amp;#x2F;thumb&amp;#x2F;6&amp;#x2F;6a&amp;#x2F;Cut_up_text.jpg&amp;#x2F;477px-Cut_up_text.jpg&quot; &#x2F;&gt;
+		src=&quot;Cut_up_text.webp&quot; &#x2F;&gt;
 	
 	&lt;figcaption&gt;Imagine each one of these scraps is a piece of code.&lt;&#x2F;figcaption&gt;
 	

@@ -107,7 +107,7 @@ With step 4, the application writes data to what it thinks is allocated heap mem
 Unfortunately for us, however, we can't go ahead and just write in instructions (A.K.A. shellcode) just yet. Modern systems, such as the one on the 3DS, have some protections to prevent executing code on the stack or heap. However, we can work around this by using a technique known as Return-Oriented Programming (ROP), which chains together small pieces of existing code to perform our desired operations.
 
 Think of ROP as something like the cut-up technique, where an artist cuts scraps out of a book or magazine, then rearranges these scraps to create a new text the author never intended.
-{{ image(url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cut_up_text.jpg/477px-Cut_up_text.jpg", hover=true, alt="An example of the cut-up technique", caption="Imagine each one of these scraps is a piece of code.") }}
+{{ image(url="Cut_up_text.webp", hover=true, alt="An example of the cut-up technique", caption="Imagine each one of these scraps is a piece of code.") }}
 
 Each piece of code, or "gadget," in our ROP chain is a small fragment of actual program code that performs a simple operation, like loading a register or calling a function, then returns control to the next gadget in the sequence.
 
