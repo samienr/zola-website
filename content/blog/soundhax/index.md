@@ -41,6 +41,10 @@ Taking advantage of this bug, we can get arbitrary code execution on the 3DS usi
 1. Causing a Buffer Overflow in the Heap
 1. Corrupting the Heap Metadata
 1. Unlink Exploitation
+1. Heap Feng Shui
+1. Constructing and Executing a ROP Chain
+1. Abusing the GPU ('gspwn')
+1. Unlimited Power!!!
 
 Anyways, here's how it works.
 

@@ -53,6 +53,10 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;li&gt;Causing a Buffer Overflow in the Heap&lt;&#x2F;li&gt;
 &lt;li&gt;Corrupting the Heap Metadata&lt;&#x2F;li&gt;
 &lt;li&gt;Unlink Exploitation&lt;&#x2F;li&gt;
+&lt;li&gt;Heap Feng Shui&lt;&#x2F;li&gt;
+&lt;li&gt;Constructing and Executing a ROP Chain&lt;&#x2F;li&gt;
+&lt;li&gt;Abusing the GPU (&#x27;gspwn&#x27;)&lt;&#x2F;li&gt;
+&lt;li&gt;Unlimited Power!!!&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;p&gt;Anyways, here&#x27;s how it works.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;1-crafting-the-malicious-file&quot;&gt;1. Crafting the malicious File&lt;&#x2F;h2&gt;
