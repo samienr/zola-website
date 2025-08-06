@@ -5,7 +5,7 @@ styles = ["index.css"]
 +++
 
 <div id="home-splash">
-    <h1>samienr</h1>
+    <h1><span>samienr</span></h1>
     <small>Electrical nerd and photographer.</small>
 </div>
 <div id="about-header">

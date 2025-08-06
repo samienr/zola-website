@@ -20,4 +20,7 @@
 		"
 		{% if alt %}alt="{{alt}}"{% endif %}
 		src="{{ url }}" />
+	{% if caption %}
+	<figcaption>{{ caption }}</figcaption>
+	{% endif %}
 {% endif %}

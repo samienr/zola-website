@@ -1,6 +1,6 @@
 +++
 title = "How The Nintendo 3DS Was Hacked Using a Music File"
-date = "2024-09-17"
+date = "2025-08-06"
 description = "A deep dive into the SoundHax exploit"
 [extra]
 toc = true
@@ -41,7 +41,7 @@ Taking advantage of this bug, we can get arbitrary code execution on the 3DS usi
 Anyways, here's how it works.
 
 ## 1. Crafting the malicious File
-The exploit begins with the construction of a M4A file containing a specially crafted Unicode title that's intentionally oversized. Nedwil used a Python script to do this:
+The exploit begins with the construction of a M4A file containing a specially crafted Unicode title that's intentionally oversized. Nedwill used a Python script to do this:
 ```python
 # Start with some text for the song title: "3 nedwill 2016"
 title = "<\x003\x00 \x00n\x00e\x00d\x00w\x00i\x00l\x00l\x00"
@@ -87,7 +87,7 @@ The allocator pretty much goes "if this chunk says its next chunk is at address 
 ## 4. Stack Manipulation | "Heap Feng Shui"
 With control over the unlink operation, we can write to any memory location. However, this power must be wielded strategically. The SoundHax exploit uses a technique known as *heap feng shui* to gain control over the program's execution stack.
 
-The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwil had to painstakingly find a particular address that's contents look like a valid heap chunk with seemingly proper heap chunk metadata values
+The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwill had to painstakingly find a particular address that's contents look like a valid heap chunk with seemingly proper heap chunk metadata values
 
 We use our arbitrary write primitive to overwrite the heap's free list header with this stack address (via the unlick exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack "chunk" as the primary candidate for the next allocation.
 
@@ -96,4 +96,34 @@ When the program makes its next `malloc()` call, the heap allocator searches thr
 ## 5. ROP Chain Construction and Execution
 With step 4, the application writes data to what it thinks is allocated heap memory, but it's actually writing to the program's execution stack. Since the stack contains values such return addresses and the local variables of functions, we now have access to control the program's execution flow.
 
-Unfortunately for us, however, we can't go ahead and just write in instructions (also known as shellcode) just yet. Modern systems, such as the one the 3DS uses
+Unfortunately for us, however, we can't go ahead and just write in instructions (A.K.A. shellcode) just yet. Modern systems, such as the one on the 3DS, have some protections to prevent executing code on the stack or heap. However, we can work around this by using a technique known as Return-Oriented Programming (ROP), which chains together small pieces of existing code to perform our desired operations.
+
+This of ROP as something like the cut-up technique, where an artist cuts scraps out of a book or magazine, then rearranges these scraps to create a new text the author never intended.
+{{ image(url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cut_up_text.jpg/477px-Cut_up_text.jpg", hover=true, alt="An example of the cut-up technique", caption="Imagine each one of these scraps is a piece of code.") }}
+
+Each piece of code, or "gadget," in our ROP chain is a small fragment of actual program code that performs a simple operation, like loading a register or calling a function, then returns control to the next gadget in the sequence.
+
+The SoundHax ROP chain performs a handful of operations. First, it copies our second-stage payload from the stack to heap memory. Next, it sets up parameters for some GPU operations. Then it actually calls said GPU functions to perform memory copynig operations that would normally be forbidden (more in this in the next section). Finally, it transfers control to our newly-positioned code.
+
+Each step of this process uses code that already exists in the application's memory space, making it extremely difficult for most prevention mechanisms to detect our attack.
+
+## 6. GPU-Assisted Code Injection (gspwn)
+I briefly mentioned GPU functions. Now let's actually talk about why we're using graphics calls and how genius this move is.
+
+When gaining code execution through the ROP chain, we were still constrined by the system's memory protection mechanisms, meaning that we weren't yet able to overwrite any of the application's code segment from userland. This usually isn't allowed as that would violate a bunch of security boundaries-- user applications *should* be kept separate from system code.
+
+Nedwill's solution to get around this was pretty creative: Abusing the 3DS's GPU. The GPU has special privileges to perform direct memory access (DMA) transfers between memory regions. This means that while almost nothing should be able to copy data from heap memory into the executable text segment of running applications, the GPU *can.*
+
+This technique, known as 'gspwn' in the 3DS homebrew community, effectively bypasses the system's code signing and memory protection by using the GPU as an unwitting accomplice in our attack. The GPU doesn't know or care that we're abusing its power, it simply performs whatever operation is requested.
+
+## 7. Full Code Execution
+With our payload now residing in executable memory, the final step is to transfer control to it. Our ROP chain concludes by jumping to the newly-written code, which implements a second-stage loader that performs the final steps of the compromise.
+
+The stage-2 payload handles some housekeeping tasks. It disables potentially problematic system threads that might interfere with homebrew eecution. It opens and reads the `otherapp.bin` file from the SD card, which contains the <colorize>homebrew launcher.</colorize> For the uninitiated, the homebrew launcher is the gateway to running homebrew applications, a.k.a. unsigned code that can be written by anyone without Nintendo's approval. Accessing the homebrew launcher is most often the first goal of modding any Nintendo console. The ROP chain uses the GPU one more time to copy this payload into memory and transfer control to it.
+
+At this point, the system is fully compromised and running arbitrary unsigned code with the same privileges as the original Sound application. The user will now see the homebrew launcher appear on screen.
+
+# Conclusion
+Unlike many other exploits for various game consoles, SoundHax required no internet connection, specific games, hardware modifications, or any complex setup procedures. Users could simply download the appropriate M4A file for their region and firmware version, copy it to their SD card, and play it through tht built-in *Nintendo 3DS Sound* application.
+
+SoundHax was patched as of firmware version 11.4 and no longer works on any Nintendo 3DS system running firmware 11.4 or higher.

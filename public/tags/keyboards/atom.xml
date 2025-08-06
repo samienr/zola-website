@@ -47,6 +47,7 @@
 		&quot;
 		alt=&quot;Traced finger positions&quot;
 		src=&quot;finger_paint.png&quot; &#x2F;&gt;
+	
 
 &lt;&#x2F;p&gt;
 &lt;figcaption&gt;Super basic, I know.&lt;&#x2F;figcaption&gt;
@@ -120,6 +121,7 @@
 		&quot;
 		alt=&quot;Preview of layout in ergogen online tool&quot;
 		src=&quot;ergogen_preview.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Preview of layout generated in Ergogen&lt;&#x2F;figcaption&gt;
 &lt;hr &#x2F;&gt;
@@ -135,6 +137,7 @@
 		&quot;
 		
 		src=&quot;KiCad_before.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;The PCB Ergogen generated&lt;&#x2F;figcaption&gt;
 
@@ -147,6 +150,7 @@
 		&quot;
 		
 		src=&quot;KiCad_after.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;After adding traces and adjusting the microcontroller footprint&lt;&#x2F;figcaption&gt;
 &lt;p&gt;Once all the electronics were in place, I decided to add some decorative patterns to the pcb, as I decided not to use a plate on this keyboard.
@@ -160,6 +164,7 @@
 		&quot;
 		
 		src=&quot;final_pcb.png&quot; &#x2F;&gt;
+	
 
 
 And with that, the PCB design was pretty much done. All that was left was ordering everything and putting it all together.&lt;&#x2F;p&gt;
@@ -179,6 +184,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;default_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Default layer&lt;&#x2F;figcaption&gt;
 
@@ -191,6 +197,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;symbol_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Symbol layer&lt;&#x2F;figcaption&gt;
 
@@ -203,6 +210,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;number_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Number layer&lt;&#x2F;figcaption&gt;
 
@@ -215,6 +223,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;tri_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Function layer&lt;&#x2F;figcaption&gt;
 
@@ -227,6 +236,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;gaming_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Gaming layer&lt;&#x2F;figcaption&gt;
 &lt;p&gt;I also decided to make another layer for gaming to keep the WASD layout, but I haven’t been able to test how effective this is.&lt;&#x2F;p&gt;
@@ -271,6 +281,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;keyboard.jpg&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;The completed product&lt;&#x2F;figcaption&gt;
 </content>

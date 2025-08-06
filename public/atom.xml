@@ -5,12 +5,12 @@
     <link rel="self" type="application/atom+xml" href="https://samienr.com/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://samienr.com"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-09-17T00:00:00+00:00</updated>
+    <updated>2025-08-06T00:00:00+00:00</updated>
     <id>https://samienr.com/atom.xml</id>
     <entry xml:lang="en">
         <title>How The Nintendo 3DS Was Hacked Using a Music File</title>
-        <published>2024-09-17T00:00:00+00:00</published>
-        <updated>2024-09-17T00:00:00+00:00</updated>
+        <published>2025-08-06T00:00:00+00:00</published>
+        <updated>2025-08-06T00:00:00+00:00</updated>
         
         <author>
           <name>
@@ -50,7 +50,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;&#x2F;ol&gt;
 &lt;p&gt;Anyways, here&#x27;s how it works.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;1-crafting-the-malicious-file&quot;&gt;1. Crafting the malicious File&lt;&#x2F;h2&gt;
-&lt;p&gt;The exploit begins with the construction of a M4A file containing a specially crafted Unicode title that&#x27;s intentionally oversized. Nedwil used a Python script to do this:&lt;&#x2F;p&gt;
+&lt;p&gt;The exploit begins with the construction of a M4A file containing a specially crafted Unicode title that&#x27;s intentionally oversized. Nedwill used a Python script to do this:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2e3440;color:#d8dee9;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;# Start with some text for the song title: &amp;quot;3 nedwill 2016&amp;quot;
 &lt;&#x2F;span&gt;&lt;span&gt;title &lt;&#x2F;span&gt;&lt;span style=&quot;color:#81a1c1;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00 \x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;e&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;w&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;l&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;\x00&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#616e88;&quot;&gt;# Add a bunch of zeros to make the title 772 bytes long
@@ -87,12 +87,43 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;p&gt;The allocator pretty much goes &quot;if this chunk says its next chunk is at address X, then I&#x27;ll update the chunk at address X to point back to the previous chunk.&quot; Except we are in control of those addresses. That is to say, we choose what address X is, and we control what the previous chunk&#x27;s address is, so we can make the allocator write an arbitrary value to an arbitrary location, A.K.A. an arbitrary write primitive.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;4-stack-manipulation-heap-feng-shui&quot;&gt;4. Stack Manipulation | &quot;Heap Feng Shui&quot;&lt;&#x2F;h2&gt;
 &lt;p&gt;With control over the unlink operation, we can write to any memory location. However, this power must be wielded strategically. The SoundHax exploit uses a technique known as &lt;em&gt;heap feng shui&lt;&#x2F;em&gt; to gain control over the program&#x27;s execution stack.&lt;&#x2F;p&gt;
-&lt;p&gt;The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwil had to painstakingly find a particular address that&#x27;s contents look like a valid heap chunk with seemingly proper heap chunk metadata values&lt;&#x2F;p&gt;
+&lt;p&gt;The goal is to trick the heap allocator into returning a stack address when the program next requests a memory allocation. As for what this stack address is, Nedwill had to painstakingly find a particular address that&#x27;s contents look like a valid heap chunk with seemingly proper heap chunk metadata values&lt;&#x2F;p&gt;
 &lt;p&gt;We use our arbitrary write primitive to overwrite the heap&#x27;s free list header with this stack address (via the unlick exploitation). At the same time, we manipulate the size field of the chunk being freed to make it appear very small, preventing it from being a viable option the next time the allocator looks for a free chunk. This sets up our fake stack &quot;chunk&quot; as the primary candidate for the next allocation.&lt;&#x2F;p&gt;
 &lt;p&gt;When the program makes its next &lt;code&gt;malloc()&lt;&#x2F;code&gt; call, the heap allocator searches through the free list looking for a suitable block. It finds our fake chunk on the stack, validates that it has enough space and proper metadata, and then returns the stack address as if it were heap memory.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;5-rop-chain-construction-and-execution&quot;&gt;5. ROP Chain Construction and Execution&lt;&#x2F;h2&gt;
 &lt;p&gt;With step 4, the application writes data to what it thinks is allocated heap memory, but it&#x27;s actually writing to the program&#x27;s execution stack. Since the stack contains values such return addresses and the local variables of functions, we now have access to control the program&#x27;s execution flow.&lt;&#x2F;p&gt;
-&lt;p&gt;Unfortunately for us, however, we can&#x27;t go ahead and just write in instructions (also known as shellcode) just yet. Modern systems, such as the one the 3DS uses&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately for us, however, we can&#x27;t go ahead and just write in instructions (A.K.A. shellcode) just yet. Modern systems, such as the one on the 3DS, have some protections to prevent executing code on the stack or heap. However, we can work around this by using a technique known as Return-Oriented Programming (ROP), which chains together small pieces of existing code to perform our desired operations.&lt;&#x2F;p&gt;
+&lt;p&gt;This of ROP as something like the cut-up technique, where an artist cuts scraps out of a book or magazine, then rearranges these scraps to create a new text the author never intended.
+
+	&lt;img class=&quot;
+			
+			
+			
+			
+                        
+		&quot;
+		alt=&quot;An example of the cut-up technique&quot;
+		src=&quot;https:&amp;#x2F;&amp;#x2F;upload.wikimedia.org&amp;#x2F;wikipedia&amp;#x2F;commons&amp;#x2F;thumb&amp;#x2F;6&amp;#x2F;6a&amp;#x2F;Cut_up_text.jpg&amp;#x2F;477px-Cut_up_text.jpg&quot; &#x2F;&gt;
+	
+	&lt;figcaption&gt;Imagine each one of these scraps is a piece of code.&lt;&#x2F;figcaption&gt;
+	
+
+&lt;&#x2F;p&gt;
+&lt;p&gt;Each piece of code, or &quot;gadget,&quot; in our ROP chain is a small fragment of actual program code that performs a simple operation, like loading a register or calling a function, then returns control to the next gadget in the sequence.&lt;&#x2F;p&gt;
+&lt;p&gt;The SoundHax ROP chain performs a handful of operations. First, it copies our second-stage payload from the stack to heap memory. Next, it sets up parameters for some GPU operations. Then it actually calls said GPU functions to perform memory copynig operations that would normally be forbidden (more in this in the next section). Finally, it transfers control to our newly-positioned code.&lt;&#x2F;p&gt;
+&lt;p&gt;Each step of this process uses code that already exists in the application&#x27;s memory space, making it extremely difficult for most prevention mechanisms to detect our attack.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;6-gpu-assisted-code-injection-gspwn&quot;&gt;6. GPU-Assisted Code Injection (gspwn)&lt;&#x2F;h2&gt;
+&lt;p&gt;I briefly mentioned GPU functions. Now let&#x27;s actually talk about why we&#x27;re using graphics calls and how genius this move is.&lt;&#x2F;p&gt;
+&lt;p&gt;When gaining code execution through the ROP chain, we were still constrined by the system&#x27;s memory protection mechanisms, meaning that we weren&#x27;t yet able to overwrite any of the application&#x27;s code segment from userland. This usually isn&#x27;t allowed as that would violate a bunch of security boundaries-- user applications &lt;em&gt;should&lt;&#x2F;em&gt; be kept separate from system code.&lt;&#x2F;p&gt;
+&lt;p&gt;Nedwill&#x27;s solution to get around this was pretty creative: Abusing the 3DS&#x27;s GPU. The GPU has special privileges to perform direct memory access (DMA) transfers between memory regions. This means that while almost nothing should be able to copy data from heap memory into the executable text segment of running applications, the GPU &lt;em&gt;can.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This technique, known as &#x27;gspwn&#x27; in the 3DS homebrew community, effectively bypasses the system&#x27;s code signing and memory protection by using the GPU as an unwitting accomplice in our attack. The GPU doesn&#x27;t know or care that we&#x27;re abusing its power, it simply performs whatever operation is requested.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;7-full-code-execution&quot;&gt;7. Full Code Execution&lt;&#x2F;h2&gt;
+&lt;p&gt;With our payload now residing in executable memory, the final step is to transfer control to it. Our ROP chain concludes by jumping to the newly-written code, which implements a second-stage loader that performs the final steps of the compromise.&lt;&#x2F;p&gt;
+&lt;p&gt;The stage-2 payload handles some housekeeping tasks. It disables potentially problematic system threads that might interfere with homebrew eecution. It opens and reads the &lt;code&gt;otherapp.bin&lt;&#x2F;code&gt; file from the SD card, which contains the &lt;colorize&gt;homebrew launcher.&lt;&#x2F;colorize&gt; For the uninitiated, the homebrew launcher is the gateway to running homebrew applications, a.k.a. unsigned code that can be written by anyone without Nintendo&#x27;s approval. Accessing the homebrew launcher is most often the first goal of modding any Nintendo console. The ROP chain uses the GPU one more time to copy this payload into memory and transfer control to it.&lt;&#x2F;p&gt;
+&lt;p&gt;At this point, the system is fully compromised and running arbitrary unsigned code with the same privileges as the original Sound application. The user will now see the homebrew launcher appear on screen.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h1&gt;
+&lt;p&gt;Unlike many other exploits for various game consoles, SoundHax required no internet connection, specific games, hardware modifications, or any complex setup procedures. Users could simply download the appropriate M4A file for their region and firmware version, copy it to their SD card, and play it through tht built-in &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application.&lt;&#x2F;p&gt;
+&lt;p&gt;SoundHax was patched as of firmware version 11.4 and no longer works on any Nintendo 3DS system running firmware 11.4 or higher.&lt;&#x2F;p&gt;
 </content>
         
     </entry>
@@ -136,6 +167,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 		&quot;
 		alt=&quot;Traced finger positions&quot;
 		src=&quot;finger_paint.png&quot; &#x2F;&gt;
+	
 
 &lt;&#x2F;p&gt;
 &lt;figcaption&gt;Super basic, I know.&lt;&#x2F;figcaption&gt;
@@ -209,6 +241,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 		&quot;
 		alt=&quot;Preview of layout in ergogen online tool&quot;
 		src=&quot;ergogen_preview.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Preview of layout generated in Ergogen&lt;&#x2F;figcaption&gt;
 &lt;hr &#x2F;&gt;
@@ -224,6 +257,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 		&quot;
 		
 		src=&quot;KiCad_before.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;The PCB Ergogen generated&lt;&#x2F;figcaption&gt;
 
@@ -236,6 +270,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 		&quot;
 		
 		src=&quot;KiCad_after.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;After adding traces and adjusting the microcontroller footprint&lt;&#x2F;figcaption&gt;
 &lt;p&gt;Once all the electronics were in place, I decided to add some decorative patterns to the pcb, as I decided not to use a plate on this keyboard.
@@ -249,6 +284,7 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 		&quot;
 		
 		src=&quot;final_pcb.png&quot; &#x2F;&gt;
+	
 
 
 And with that, the PCB design was pretty much done. All that was left was ordering everything and putting it all together.&lt;&#x2F;p&gt;
@@ -268,6 +304,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;default_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Default layer&lt;&#x2F;figcaption&gt;
 
@@ -280,6 +317,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;symbol_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Symbol layer&lt;&#x2F;figcaption&gt;
 
@@ -292,6 +330,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;number_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Number layer&lt;&#x2F;figcaption&gt;
 
@@ -304,6 +343,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;tri_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Function layer&lt;&#x2F;figcaption&gt;
 
@@ -316,6 +356,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;gaming_layer.png&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;Gaming layer&lt;&#x2F;figcaption&gt;
 &lt;p&gt;I also decided to make another layer for gaming to keep the WASD layout, but I haven’t been able to test how effective this is.&lt;&#x2F;p&gt;
@@ -360,6 +401,7 @@ And with that, the PCB design was pretty much done. All that was left was orderi
 		&quot;
 		
 		src=&quot;keyboard.jpg&quot; &#x2F;&gt;
+	
 
 &lt;figcaption&gt;The completed product&lt;&#x2F;figcaption&gt;
 </content>
