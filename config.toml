@@ -21,6 +21,7 @@ highlight_theme = "nord"
 #  { theme = "rose-pine-light", filename = "syntax-theme-light.css" },
 #]
 smart_punctuation = false
+lazy_async_image = true
 
 [search]
 index_format = "elasticlunr_json"
