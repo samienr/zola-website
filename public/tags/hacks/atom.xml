@@ -23,7 +23,13 @@
         <link rel="alternate" type="text/html" href="https://samienr.com/blog/soundhax/"/>
         <id>https://samienr.com/blog/soundhax/</id>
         
-        <content type="html" xml:base="https://samienr.com/blog/soundhax/">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;soundhax.com&quot;&gt;SoundHax&lt;&#x2F;a&gt; was one of the most accessible exploits to get unsigned code running on the Nintendo 3DS. It worked by abusing a bug found in the &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application with a specially-crafted &lt;code&gt;.m4a&lt;&#x2F;code&gt; file.&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://samienr.com/blog/soundhax/">&lt;blockquote class=&quot;note&quot;&gt;
+	&lt;p class=&quot;alert-title&quot;&gt;
+		&lt;i class=&quot;icon&quot;&gt;&lt;&#x2F;i&gt;Note&lt;&#x2F;p&gt;
+	&lt;p&gt;SoundHax was patched as of firmware version 11.4 and does not work on any Nintendo 3DS system running firmware 11.4 or higher.&lt;&#x2F;p&gt;
+
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;soundhax.com&quot;&gt;SoundHax&lt;&#x2F;a&gt; was one of the most accessible exploits to get unsigned code running on the Nintendo 3DS. It worked by abusing a bug found in the &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application with a specially-crafted &lt;code&gt;.m4a&lt;&#x2F;code&gt; file.&lt;&#x2F;p&gt;
 &lt;p&gt;The exploit was special as it was the first exploit on the 3DS that was free, offline, and worked on every version of the firmware as of when it was discovered.&lt;&#x2F;p&gt;
 &lt;p&gt;To fully appreciate this brilliant symphony of hacks, a basic understanding of memory management is recommended. I wrote a quick and dirty explainer &lt;a href=&quot;https:&#x2F;&#x2F;samienr.com&#x2F;blog&#x2F;soundhax&#x2F;memory&quot;&gt;over here&lt;&#x2F;a&gt; if you want a fast refresher.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;small&gt;Before proceeding, I&#x27;d also highly suggest reading the writeup on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nedwill&#x2F;soundhax?tab=readme-ov-file#writeup&quot;&gt;Nedwill&#x27;s GitHub page&lt;&#x2F;a&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
@@ -123,7 +129,6 @@ By providing a carefully crafted Unicode title longer than 256 bytes, an attacke
 &lt;p&gt;At this point, the system is fully compromised and running arbitrary unsigned code with the same privileges as the original Sound application. The user will now see the homebrew launcher appear on screen.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h1&gt;
 &lt;p&gt;Unlike many other exploits for various game consoles, SoundHax required no internet connection, specific games, hardware modifications, or any complex setup procedures. Users could simply download the appropriate M4A file for their region and firmware version, copy it to their SD card, and play it through tht built-in &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application.&lt;&#x2F;p&gt;
-&lt;p&gt;SoundHax was patched as of firmware version 11.4 and no longer works on any Nintendo 3DS system running firmware 11.4 or higher.&lt;&#x2F;p&gt;
 </content>
         
     </entry>

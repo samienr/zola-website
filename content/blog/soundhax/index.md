@@ -6,6 +6,10 @@ description = "A deep dive into the SoundHax exploit"
 tags = ["Console modding", "Computers", "Hacks"]
 +++
 
+{% alert(note=true) %}
+SoundHax was patched as of firmware version 11.4 and does not work on any Nintendo 3DS system running firmware 11.4 or higher.
+{% end %}
+
 [SoundHax](https://soundhax.com) was one of the most accessible exploits to get unsigned code running on the Nintendo 3DS. It worked by abusing a bug found in the *Nintendo 3DS Sound* application with a specially-crafted `.m4a` file.
 
 The exploit was special as it was the first exploit on the 3DS that was free, offline, and worked on every version of the firmware as of when it was discovered. 
@@ -126,4 +130,3 @@ At this point, the system is fully compromised and running arbitrary unsigned co
 # Conclusion
 Unlike many other exploits for various game consoles, SoundHax required no internet connection, specific games, hardware modifications, or any complex setup procedures. Users could simply download the appropriate M4A file for their region and firmware version, copy it to their SD card, and play it through tht built-in *Nintendo 3DS Sound* application.
 
-SoundHax was patched as of firmware version 11.4 and no longer works on any Nintendo 3DS system running firmware 11.4 or higher.
