@@ -21,7 +21,7 @@ To fully appreciate this brilliant symphony of hacks, a basic understanding of m
 ---
 
 # The Vulnerability
-For context, the M4A format uses the MP4 file formt. At its core, SoundHax exploits a bug in how the *Nintendo 3DS Sound* application handles MP4 atom tags.
+For context, the M4A format uses the MP4 file format. At its core, SoundHax exploits a bug in how the *Nintendo 3DS Sound* application handles MP4 atom tags.
 
 That is, when loading in an M4A file, a 256-byte buffer is allocated on the heap for song names (the max size according to the MP4 spec). 
 The song name is then copied from the file into the buffer using one of two functions:
@@ -50,11 +50,11 @@ The exploit begins with the construction of a M4A file containing a specially cr
 # Start with some text for the song title: "3 nedwill 2016"
 title = "<\x003\x00 \x00n\x00e\x00d\x00w\x00i\x00l\x00l\x00"
 # Add a bunch of zeros to make the title 772 bytes long
-title += " \x00"*((772-len(title)) / 2) # Way bigger than 256 bytes!
+title += " \x00"*((772-len(title)) / 2) # Much larger than 256 bytes!
 ```
 This creates a 772 byte string for the title. But this alone isn't enough. 
 
-The MP4 file format needs each piece of data to be labeled with its exact size. In other words, we also need the file metadata to tell the 3DS how long this title is. When the rest of this Python script builds the final M4A file, it calculates the length of our oversized title and embeds it as binary data into the file header, like any other MP4 file is structured.
+The MP4 file format needs each piece of data to be labeled with its exact size which means we also need the file metadata to tell the 3DS how long this title is. When the rest of this Python script builds the final M4A file, it calculates the length of our oversized title and embeds it as binary data into the file header, like any other MP4 file is structured.
 
 The file isn't lying about anything, it genuinely contains 772 bytes of title data, properly labeled and all. It's just that 772 bytes is *way too many* bytes for a title, and it goes well over the allocated space of 256 bytes. This means that the rest of the 516 bytes end up writing over other regions of memory.
 
@@ -102,19 +102,19 @@ With step 4, the application writes data to what it thinks is allocated heap mem
 
 Unfortunately for us, however, we can't go ahead and just write in instructions (A.K.A. shellcode) just yet. Modern systems, such as the one on the 3DS, have some protections to prevent executing code on the stack or heap. However, we can work around this by using a technique known as Return-Oriented Programming (ROP), which chains together small pieces of existing code to perform our desired operations.
 
-This of ROP as something like the cut-up technique, where an artist cuts scraps out of a book or magazine, then rearranges these scraps to create a new text the author never intended.
+Think of ROP as something like the cut-up technique, where an artist cuts scraps out of a book or magazine, then rearranges these scraps to create a new text the author never intended.
 {{ image(url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cut_up_text.jpg/477px-Cut_up_text.jpg", hover=true, alt="An example of the cut-up technique", caption="Imagine each one of these scraps is a piece of code.") }}
 
 Each piece of code, or "gadget," in our ROP chain is a small fragment of actual program code that performs a simple operation, like loading a register or calling a function, then returns control to the next gadget in the sequence.
 
-The SoundHax ROP chain performs a handful of operations. First, it copies our second-stage payload from the stack to heap memory. Next, it sets up parameters for some GPU operations. Then it actually calls said GPU functions to perform memory copynig operations that would normally be forbidden (more in this in the next section). Finally, it transfers control to our newly-positioned code.
+The SoundHax ROP chain performs a handful of operations. First, it copies our second-stage payload from the stack to heap memory. Next, it sets up parameters for some GPU operations. Then it actually calls these GPU functions to perform memory copying operations that would normally be forbidden (more on this in the next section). Finally, it transfers control to our newly-positioned code.
 
 Each step of this process uses code that already exists in the application's memory space, making it extremely difficult for most prevention mechanisms to detect our attack.
 
 ## 6. GPU-Assisted Code Injection (gspwn)
 I briefly mentioned GPU functions. Now let's actually talk about why we're using graphics calls and how genius this move is.
 
-When gaining code execution through the ROP chain, we were still constrined by the system's memory protection mechanisms, meaning that we weren't yet able to overwrite any of the application's code segment from userland. This usually isn't allowed as that would violate a bunch of security boundaries-- user applications *should* be kept separate from system code.
+When gaining code execution through the ROP chain, we were still constrained by the system's memory protection mechanisms, meaning that we weren't yet able to overwrite any of the application's code segment from userland. This usually isn't allowed as that would violate a bunch of security boundaries-- user applications *should* be kept separate from system code.
 
 Nedwill's solution to get around this was pretty creative: Abusing the 3DS's GPU. The GPU has special privileges to perform direct memory access (DMA) transfers between memory regions. This means that while almost nothing should be able to copy data from heap memory into the executable text segment of running applications, the GPU *can.*
 
@@ -123,10 +123,10 @@ This technique, known as 'gspwn' in the 3DS homebrew community, effectively bypa
 ## 7. Full Code Execution
 With our payload now residing in executable memory, the final step is to transfer control to it. Our ROP chain concludes by jumping to the newly-written code, which implements a second-stage loader that performs the final steps of the compromise.
 
-The stage-2 payload handles some housekeeping tasks. It disables potentially problematic system threads that might interfere with homebrew eecution. It opens and reads the `otherapp.bin` file from the SD card, which contains the <colorize>homebrew launcher.</colorize> For the uninitiated, the homebrew launcher is the gateway to running homebrew applications, a.k.a. unsigned code that can be written by anyone without Nintendo's approval. Accessing the homebrew launcher is most often the first goal of modding any Nintendo console. The ROP chain uses the GPU one more time to copy this payload into memory and transfer control to it.
+The stage-2 payload disables potentially problematic system threads that might interfere with homebrew execution. It then opens and reads the `otherapp.bin` file from the SD card, which contains the <colorize>homebrew launcher.</colorize> For the uninitiated, the homebrew launcher is the gateway to running homebrew applications <small>(a.k.a. unsigned code that can be written by anyone without Nintendo's approval)</small>. The ROP chain uses the GPU one more time to copy this payload into memory and transfer control to it.
 
 At this point, the system is fully compromised and running arbitrary unsigned code with the same privileges as the original Sound application. The user will now see the homebrew launcher appear on screen.
 
 # Conclusion
-Unlike many other exploits for various game consoles, SoundHax required no internet connection, specific games, hardware modifications, or any complex setup procedures. Users could simply download the appropriate M4A file for their region and firmware version, copy it to their SD card, and play it through tht built-in *Nintendo 3DS Sound* application.
+Unlike many other exploits for various game consoles, SoundHax required no internet connection, specific games, hardware modifications, or any complex setup procedures. Users could simply download the appropriate M4A file for their region and firmware version, copy it to their SD card, and play it through that built-in *Nintendo 3DS Sound* application.
 
