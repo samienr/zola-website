@@ -14,7 +14,9 @@ SoundHax was patched as of firmware version 11.4 and does not work on any Ninten
 
 The exploit was special as it was the first exploit on the 3DS that was free, offline, and worked on every version of the firmware as of when it was discovered. 
 
-To fully appreciate this brilliant symphony of hacks, a basic understanding of memory management is recommended. I wrote a quick and dirty explainer [over here](memory) if you want a fast refresher.
+{% alert(important=true) %}
+To fully appreciate this brilliant symphony of hacks, a basic understanding of memory management is recommended. [This article does a good job explaining the basics](https://samwho.dev/memory-allocation/).
+{% end %}
 
 <small>Before proceeding, I'd also highly suggest reading the writeup on [Nedwill's GitHub page](https://github.com/nedwill/soundhax?tab=readme-ov-file#writeup)</small>
 

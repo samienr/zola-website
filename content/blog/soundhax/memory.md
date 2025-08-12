@@ -1,6 +1,7 @@
 +++
 title = "How Computer Memory Works"
 template = "article.html"
+draft = true
 [extra]
 disclaimer = "This is an ***extremely*** watered down summary of computer memory at a very high level. Memory is a complex subject and cannot be comprehensively explained in a blog post. Do not take everything you read here as fact."
 +++

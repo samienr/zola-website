@@ -31,7 +31,12 @@
 &lt;&#x2F;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;soundhax.com&quot;&gt;SoundHax&lt;&#x2F;a&gt; was one of the most accessible exploits to get unsigned code running on the Nintendo 3DS. It worked by abusing a bug found in the &lt;em&gt;Nintendo 3DS Sound&lt;&#x2F;em&gt; application with a specially-crafted &lt;code&gt;.m4a&lt;&#x2F;code&gt; file.&lt;&#x2F;p&gt;
 &lt;p&gt;The exploit was special as it was the first exploit on the 3DS that was free, offline, and worked on every version of the firmware as of when it was discovered.&lt;&#x2F;p&gt;
-&lt;p&gt;To fully appreciate this brilliant symphony of hacks, a basic understanding of memory management is recommended. I wrote a quick and dirty explainer &lt;a href=&quot;https:&#x2F;&#x2F;samienr.com&#x2F;blog&#x2F;soundhax&#x2F;memory&quot;&gt;over here&lt;&#x2F;a&gt; if you want a fast refresher.&lt;&#x2F;p&gt;
+&lt;blockquote class=&quot;important&quot;&gt;
+	&lt;p class=&quot;alert-title&quot;&gt;
+		&lt;i class=&quot;icon&quot;&gt;&lt;&#x2F;i&gt;Important&lt;&#x2F;p&gt;
+	&lt;p&gt;To fully appreciate this brilliant symphony of hacks, a basic understanding of memory management is recommended. &lt;a href=&quot;https:&#x2F;&#x2F;samwho.dev&#x2F;memory-allocation&#x2F;&quot;&gt;This article does a good job explaining the basics&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+&lt;&#x2F;blockquote&gt;
 &lt;p&gt;&lt;small&gt;Before proceeding, I&#x27;d also highly suggest reading the writeup on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nedwill&#x2F;soundhax?tab=readme-ov-file#writeup&quot;&gt;Nedwill&#x27;s GitHub page&lt;&#x2F;a&gt;&lt;&#x2F;small&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;h1 id=&quot;the-vulnerability&quot;&gt;The Vulnerability&lt;&#x2F;h1&gt;
