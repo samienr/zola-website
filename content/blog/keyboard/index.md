@@ -3,7 +3,7 @@ title = "How I Designed My First Custom Keyboard"
 description = "How I went from not knowing anything about keyboard PCBs to designing one"
 date = "2024-06-14"
 [taxonomies]
-tags = ["Keyboards", "Electronics", "Projects"]
+tags = ["Projects", "Keyboards"]
 [extra]
 toc = true
 banner = "keyboard.jpg"

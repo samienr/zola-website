@@ -18,7 +18,7 @@ I like </span> <del class="glitched"> breaking</del> making things.
 
 I'm studying <colorize>Electrical and Computer Engineering</colorize> at <span style="color: #bf5700;">***UT Austin***</span> with a focus in <colorize>computer architecture</colorize> and <colorize>embedded systems.</colorize>
 
-I enjoy [photography,](@/photography/index.md) [mechanical keyboards,](../tags/keyboards/) and maintaining my homelab.
+I also enjoy [photography,](@/photography/index.md) [mechanical keyboards,](../tags/keyboards/) and maintaining my homelab.
 
 When I have some free time, I like <colorize>bouldering</colorize> and <colorize>modding video game consoles.</colorize>
 

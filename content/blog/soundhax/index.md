@@ -3,7 +3,7 @@ title = "How The Nintendo 3DS Was Hacked Using a Music File"
 date = "2025-08-06"
 description = "A deep dive into the SoundHax exploit"
 [taxonomies]
-tags = ["Console modding", "Computers", "Hacks"]
+tags = ["Console modding", "Hacks"]
 +++
 
 {% alert(note=true) %}
