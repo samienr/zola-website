@@ -51,6 +51,34 @@
             font-style: italic;
             font-weight: bold;
         }
+  h1 {
+    font-size: 1.8rem;
+  }
+  h1 span {
+    transition: var(--transition-longer);
+    &:hover {
+      transform: translate(9px, -9px);
+      color: #a1ddf4;
+      text-shadow:
+      -3px 3px 0 #1998d5,
+      -6px 6px 0 #ffe96b,
+      -9px 9px 0 #ee4043;
+      transition: var(--transition-longer);
+    }
+    &:active {
+      transform: translate(-9px, -9px);
+      color: #a1ddf4;
+      text-shadow:
+       1px 3px 0 #1998d5,
+       2px 6px 0 #ffe96b,
+       3px 9px 0 #ee4043;
+    }
+  }
+}
+.name {
+    font-weight: bold;
+    font-style: italic;
+    color: var(--accent-color);
 }
 .hover {
     display: inline-block;
@@ -82,4 +110,8 @@ small
   font-family: var(--font-system-ui);
   font-weight: 500;
   line-height: 1;
+}
+
+.crt pre {
+  text-align: center;
 }

@@ -4,15 +4,26 @@ title = "Samien Rahman"
 styles = ["index.css"]
 +++
 
-<div id="home-splash">
+{% crt() %}
+```
+▄▄▄▄▄ ▄ ▄▄▄▄ ▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄ ▄ ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ █▄█▄█▄▄▄▄█ ▄ █ ▄▄▄ ▄ ▄▄▄▄▄▄ █ █ █ █ ▄▄▄▄▄ ▄ ▄ ▄ ▄
+█ ▄ ▄ ▄▄▄▄▄▄▄█▄█ █▄█ █▄▄▄ ▄ █ ▄▄█ █ █ █ █▄█▄█▄█▄█▄█
+█ ▄▄▄▄▄▄▄▄▄▄ ▄ ▄▄█ █▄▄▄▄█ █ █ █▄█ █ █ █▄▄▄▄▄▄▄▄▄▄ ▄
+█ █▄▄▄▄▄▄▄▄▄▄▄▄█ ▄▄▄▄▄▄▄▄▄█▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+```
+{% end %}
+
+<!-- <div id="home-splash">
     <h1><span>samienr</span></h1>
     <small>Electrical nerd and photographer.</small>
-</div>
+</div> -->
+
 <div id="about-header">
-<h2>
-Hi, I'm Samien.<br>
-I like </span> <del class="glitched"> breaking</del> making things.
-</h2>
+<h1>
+Hi, I'm <span class="name">Samien</span>.<br>
+I like <del class="glitched"> breaking</del> making things.
+</h1>
 {{ image(url="/memoji.png", alt="This is kind of what I look like!", transparent=true) }}
 </div>
 
