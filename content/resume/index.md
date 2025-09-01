@@ -54,18 +54,21 @@ If you are interested in any additional details, please feel free to [reach out]
 # <colorize>__Education__</colorize>
 #### Bachelor of Science, Electrical and Computer Engineering
 *University of Texas at Austin • Expected grad. Dec. 2026*
-- **Relevant Coursework:** *Computer Architecture, Embedded Systems + Lab, Digital Logic Design, Circuit Theory, Data Structures, Linear Algebra, Signals and Systems, Probability, Differential Equations*
+- **Relevant Coursework:** *Computer Architecture, Embedded Systems + Lab, Digital Logic Design, Circuit Theory, Data Structures, Algorithms, Linear Algebra, Signals and Systems*
 
 # <colorize>__Skills__</colorize>
 
-## **Hardware**
+## **Hardware/Embedded**
 - ARM-Cortex M
+- JTAG Debugging
+- I2C, SPI, UART, Bluetooth
+- Timers, Interrupts, GPIO Usage
+- PCB design, Oscilloscopes, Micro soldering
+- Platforms:
     - STM32
     - Nordic NRF
-- Timers, Interrupts, GPIO Usage
-- I2C, SPI, UART, Bluetooth
-- JTAG Debugging
-- PCB design, Oscilloscope usage, Micro soldering
+    - SiLabs EFM32LG
+    - TI MSPM0, TM4C
 
 ## **Software**
 - Embedded C, C++, Python, ARM Assembly, Java

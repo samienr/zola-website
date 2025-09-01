@@ -1,7 +1,32 @@
- @use "../themes/duckquill/sass/mods/modern-hr";
+@use "../themes/duckquill/sass/mods/modern-hr";
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-Regular.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-Bold.woff2") format('woff2');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-BoldItalic.woff2") format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-Bold.woff2") format('woff2');
+  font-style: italic;
+}
 
 :root {
   font-size: 1.05rem;
+  --font-monospace-code: "JetBrains Mono" !important;
  }
 .container {
   width: min(730px, 90%);

@@ -14,7 +14,7 @@ taxonomies = [{ name = "tags", feed = true }]
 
 [markdown]
 highlight_code = true
-highlight_theme = "nord"
+highlight_theme = "ayu-mirage"
 #highlight_theme = "css"
 #highlight_themes_css = [
 #  { theme = "rose-pine-dark", filename = "syntax-theme-dark.css" },
