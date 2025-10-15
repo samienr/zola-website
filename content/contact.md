@@ -10,5 +10,4 @@ Feel free to send me a message on either of these. Whether you’ve got somethin
 You can ~~stalk me~~ see what I'm to on these platforms as well:
 
 - [LinkedIn](https://www.linkedin.com/in/samienr/)
-- [YouTube](https://www.youtube.com/@sorrational)
 - [Github](https://github.com/SamienR/)
