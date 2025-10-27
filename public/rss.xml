@@ -7,7 +7,31 @@
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://samienr.com/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Wed, 06 Aug 2025 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Sun, 26 Oct 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Designing a CPU From Scratch, Part 1: ISA</title>
+          <pubDate>Sun, 26 Oct 2025 00:00:00 +0000</pubDate>
+          <author>Samien Rahman</author>
+          <link>https://samienr.com/blog/designing-a-cpu-01/</link>
+          <guid>https://samienr.com/blog/designing-a-cpu-01/</guid>
+          <description xml:base="https://samienr.com/blog/designing-a-cpu-01/">&lt;p&gt;I&#x27;ve been wanting to practice my understanding of computer architecture ever since I completed &lt;a href=&quot;https:&#x2F;&#x2F;users.ece.utexas.edu&#x2F;~patt&#x2F;24f.460n&#x2F;&quot;&gt;this course&lt;&#x2F;a&gt; during my studies. However, I didn&#x27;t know Verilog at the time, so the most I could do was a cycle-accurate pipelined &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;samienr&#x2F;ECE460N&#x2F;tree&#x2F;main&#x2F;lab6&#x2F;submission&quot;&gt;simulator&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The goal is to take this project to the next level: &lt;strong&gt;I&#x27;m going to make a pipelined RISC-V core.&lt;&#x2F;strong&gt; The goal is simple: create a pipelined, in-order processor that can execute RV32I instructions.&lt;&#x2F;p&gt;
+&lt;p&gt;After I get some basic functionality, I will try to implement support for interrupts and more exceptions. Then I&#x27;ll explore branch prediction and out-of-order execution.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;instruction-set-architecture&quot;&gt;Instruction Set Architecture&lt;&#x2F;h1&gt;
+&lt;p&gt;The instruction set architecture (ISA) is the contract between hardware and software, meaning it defines how instructions are encoded, what registers exist, and what operations a CPU can perform. It is &lt;strong&gt;not&lt;&#x2F;strong&gt; the implementation details. In other words, it defines &lt;em&gt;what&lt;&#x2F;em&gt; the CPU can do, but doesn&#x27;t dictate &lt;em&gt;how.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Choosing the ISA is a &lt;em&gt;very significant&lt;&#x2F;em&gt; decision as it affects the CPUs fundamental design, and everything that builds on it. This includes instruction encoding, register file, and memory.&lt;&#x2F;p&gt;
+&lt;p&gt;Since the primary purpose of this project is the learning experience, I figured using the RV32I instruction set is a no-brainer. The abundance of resources due to RISC-V&#x27;s open-source nature makes it a natural choice for such a learning exercise.&lt;&#x2F;p&gt;
+&lt;p&gt;With that in mind, I can start designing the individual logical components of the processor. I don&#x27;t have the entire thing planned out yet, but I&#x27;m going to begin with the following components, then continue with whatever makes the most sense:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;ALU&lt;&#x2F;li&gt;
+&lt;li&gt;Register file&lt;&#x2F;li&gt;
+&lt;li&gt;Decoder + control signals&lt;&#x2F;li&gt;
+&lt;li&gt;We&#x27;ll figure it out as we go&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Once I get everything working, I&#x27;ll try to get this running on an FPGA.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m optimistic I can get this done within four months, but Murphy&#x27;s Law &lt;em&gt;is&lt;&#x2F;em&gt; very much a thing.&lt;&#x2F;p&gt;
+</description>
+      </item>
       <item>
           <title>How The Nintendo 3DS Was Hacked Using a Music File</title>
           <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>

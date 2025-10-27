@@ -7,6 +7,10 @@
         <loc>https://samienr.com/blog/</loc>
     </url>
     <url>
+        <loc>https://samienr.com/blog/designing-a-cpu-01/</loc>
+        <lastmod>2025-10-26</lastmod>
+    </url>
+    <url>
         <loc>https://samienr.com/blog/keyboard/</loc>
         <lastmod>2024-06-14</lastmod>
     </url>
@@ -69,7 +73,13 @@
         <loc>https://samienr.com/tags/</loc>
     </url>
     <url>
+        <loc>https://samienr.com/tags/computer-architecture/</loc>
+    </url>
+    <url>
         <loc>https://samienr.com/tags/console-modding/</loc>
+    </url>
+    <url>
+        <loc>https://samienr.com/tags/designing-a-cpu/</loc>
     </url>
     <url>
         <loc>https://samienr.com/tags/hacks/</loc>
