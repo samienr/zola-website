@@ -7,12 +7,6 @@ A full PDF of my resume can be found [here](Resume.pdf).
 If you are interested in any additional details, please feel free to [reach out](../contact).
 
 # <colorize>__Experience__</colorize>
-### Pipelined LC-3b Microarchitecture Simulator
-*Aug. 2024 – Dec. 2024 • Computer Architecture, Pipelining, C, Microarchitecture*  
-- Wrote cycle-accurate five-stage pipelined LC-3b CPU simulator (Fetch, Decode, Execute, Memory, Writeback)
-- Designed and integrated pipeline control logic, including hazard detection, stall insertion, and branch resolution
-- Verified correction through simulation of assembly test programs
-
 ### Embedded Firmware Engineering Intern
 ***Lutron — Austin, TX***  
 *Aug. 2023 – Jun. 2024 • PCB Design, ZMK Firmware*  
@@ -29,6 +23,12 @@ If you are interested in any additional details, please feel free to [reach out]
 - Created four drivers for EDK2 Redfish Client to transmit captured data to BMC via DMTF Redfish protocol
 
 # <colorize>__Projects__</colorize>
+
+### Pipelined LC-3b Microarchitecture Simulator
+*Aug. 2024 – Dec. 2024 • Computer Architecture, Pipelining, C, Microarchitecture*  
+- Wrote cycle-accurate five-stage pipelined LC-3b CPU simulator (Fetch, Decode, Execute, Memory, Writeback)
+- Designed and integrated pipeline control logic, including hazard detection, stall insertion, and branch resolution
+- Verified correction through simulation of assembly test programs
 
 ### Wireless Split Ergonomic Keyboard
 
