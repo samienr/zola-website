@@ -71,3 +71,6 @@ links = [
 
 show_copyright = true
 #show_powered_by = true
+
+[extra.goatcounter]
+user = "samienr"
