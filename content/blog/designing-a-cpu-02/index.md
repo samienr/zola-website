@@ -6,21 +6,32 @@ description = "Understanding RV32I instructions and implementing the most basic 
 tags = ["Projects", "Computer Architecture", "Designing a CPU"]
 +++
 # Arithmetic Logic Unit (ALU)
-After skimming through the RV32I instruction set, I figured I could start with the arithmetic logic unit (ALU). The ALU is where most actual computations happen. Its composition depends on what operations it needs to perform. For RV32I, these are the operations I will need to implement for a functional ALU:
+
+After skimming through the RV32I instruction set, I figured I could start with
+the arithmetic logic unit (ALU). The ALU is where most actual computations happen.
+Its composition depends on what operations it needs to perform. For RV32I,
+these are the operations I will need to implement for a functional ALU:
 
 |Instruction |ALU Unit Needed |
 |-------------|---------------|
-|`add`, `addi`|Adder | 
-|`sub`, `slt`, `sltu`|Subtractor | 
-|`slli`, `srli`, `srai`, `sll`, `sra`, `srl`|Shifter | 
-|`and`, `or`, `xor`, `andi`, `ori`, `xori`| Primitive logic gates | 
+|`add`, `addi`|Adder |
+|`sub`, `slt`, `sltu`|Subtractor |
+|`slli`, `srli`, `srai`, `sll`, `sra`, `srl`|Shifter |
+|`and`, `or`, `xor`, `andi`, `ori`, `xori`| Primitive logic gates |
 
-Our design will simply have circuitry to compute all these operations and then multiplex out whatever an `ALU_Op` control signal requests.
+Our design will simply have circuitry to compute all these operations and
+then multiplex out whatever an `ALU_Op` control signal requests.
 
-I'm aware that there are some other instructions that do math, such as `auipc` and `lui`. These operations will use their own dedicated hardware outside of the ALU.
+I'm aware that there are some other instructions that do math, such as
+`auipc` and `lui`. These operations will use their own dedicated
+hardware outside of the ALU.
 
 ## Condition Codes/Flags
-In addition to the operations, our machine also needs to generate condition flags. RV32I doesn't really define how we will handle whether branches are taken or not, so how we approach this is up to us. The simplest approach I found was only checking for three conditions:
+
+In addition to the operations, our machine also needs to generate condition
+flags. RV32I doesn't really define how we will handle whether branches are
+taken or not, so how we approach this is up to us. The simplest approach
+I found was only checking for three conditions:
 
 1. Is our result zero?
 1. Is A < B? (unsigned)
@@ -28,7 +39,7 @@ In addition to the operations, our machine also needs to generate condition flag
 
 We can easily use the results of the subtractor for these signals. Every type of branch instruction we will need to consider can be resolved using these three conditions.
 
-| Instruction | Logical Condition | Alu Signal |
+| Instruction | Logical Condition | ALU Signal |
 |-------------|-------------------|------------|
 |beq|A == B|Zero|
 |bne|A != B|NOT Zero|
@@ -38,10 +49,14 @@ We can easily use the results of the subtractor for these signals. Every type of
 |bge|A \>= B (signed)|NOT A < B (signed)|
 
 The `zero` condition will simply check if A and B are equal to each other.  
-The less than (unsigned) condition `ltU` will be computed by subtracting `A - B` and taking the complement of the subtractor's borrow bit.  
-The less than (signed) condition `lt` will use the same subtractor and result. Its value will come from the `XOR` of the subtractor's borrow bit and another signal that indicates whether or not the subtractor had overflow.
+The less than (unsigned) condition `ltU` will be computed by subtracting
+`A - B` and taking the complement of the subtractor's borrow bit.  
+The less than (signed) condition `lt` will use the same subtractor and
+result. Its value will come from the `XOR` of the subtractor's borrow
+bit and another signal that indicates whether or not the subtractor had overflow.
 
-## Code
+## ALU Code
+
 ```verilog
 module ALU(
     input [31:0] A,
@@ -73,6 +88,7 @@ Result = 32'b0;
         `ALU_PASSB:     Result = B;
         `ALU_SLT:       Result = {{31{1'b0}}, lt};
         `ALU_SLTU:      Result = {{31{1'b0}}, ltU};
+        default:        Result = A;
     endcase
 end
 endmodule
@@ -100,7 +116,8 @@ value that was there before. To fix this, all we need is the ability to
 directly output what is being written if the destination register happens
 to be one of the source registers.
 
-## Code
+## Register File Code
+
 ```verilog
 module RegFile(
     input clk,
@@ -130,10 +147,13 @@ endmodule
 ```
 
 # Program Counter (PC)
+
 Even more trivial than the register file is the PC. The PC is a simple 32-bit register
 that can be updated every cycle. In real hardware, this would be driven by some reset
 logic or a boot ROM.
-## Code
+
+## PC Code
+
 ```verilog
 module PC(
     input clk,
@@ -152,10 +172,17 @@ endmodule
 ```
 
 # Memory
-Even though RISC-V architecturally has instruction and data memory unified, I'm going to keep instructions and data separate in hardware as it makes pipelining much less of a headache. They're usually cached separately in most machines anyways.
+
+Even though RISC-V architecturally has instruction and data memory unified,
+I'm going to keep instructions and data separate in hardware as it makes
+pipelining much less of a headache. They're usually cached separately in
+most machines anyways.
 
 ## Instructions
-We will make the instruction memory behave like a synchronous ROM. We'll also ensure that it is only word addressable.
+
+We will make the instruction memory behave like a synchronous ROM.
+We'll also ensure that it is only word addressable.
+
 ```verilog
 // TODO: Add simulated delay
 
@@ -169,12 +196,14 @@ module InstructionMemory(
 //    initial $readmemh("program.hex", mem);
 
     always @(posedge clk)
-        instruction <= mem[addr[11:2]]; // chop off last two bits to ensure word aligned
+        // chop off last two bits to ensure word aligned
+        instruction <= mem[addr[11:2]];
         
 endmodule
 ```
 
 ## Data
+
 Data memory is a little more complicated as we need to be able to operate on
 bytes, halfwords, and words for stores. I'm just going to model this internally
 as an array of 8-bit registers. The input and output will be in terms of words,
@@ -213,6 +242,14 @@ endmodule
 ```
 
 # What's Next?
-Now we have the most basic components, we are ready to think about how we will decode instructions and wire the datapath. That will involve creating the control signals, logic relating to control signals, smaller intermediate components depending on what instructions need, and the pipeline registers. After we do that, all that should be left is hazard control, handling branches, and testing.
 
-For now, feel free to take a look at the [source HDL code I have so far on my GitHub.](https://github.com/samienr/risc-v-toy) Until then, take care!
+Now we have the most basic components, we are ready to think about how we
+will decode instructions and wire the datapath. That will involve creating
+the control signals, logic relating to control signals, smaller intermediate
+components depending on what instructions need, and the pipeline registers.
+After we do that, all that should be left is hazard control, handling
+branches, and testing.
+
+For now, feel free to take a look at the
+[source HDL code I have so far on my GitHub.](https://github.com/samienr/risc-v-toy)
+Until then, take care!
