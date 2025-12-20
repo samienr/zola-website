@@ -8,9 +8,9 @@ tags = ["Projects", "Computer Architecture", "Designing a CPU"]
 
 I've been wanting to practice my understanding of computer architecture ever since I completed [this course](https://users.ece.utexas.edu/~patt/24f.460n/) during my studies. However, I didn't know Verilog at the time, so the most I could do was a cycle-accurate pipelined [simulator](https://github.com/samienr/ECE460N/tree/main/lab6/submission).
 
-The goal is to take this project to the next level: **I'm going to make a pipelined RISC-V core.** The goal is simple: create a pipelined, in-order processor that can execute RV32I instructions.
+The goal is to take this project to the next level: **I'm going to make a synthesizable pipelined RISC-V core in RTL.** The goal is simple: create a pipelined, in-order processor that can execute RV32I instructions.
 
-After I get some basic functionality, I will try to implement support for interrupts and more exceptions. Then I'll explore caches, branch prediction, and out-of-order execution.
+After I get some basic functionality, I will try to implement support for interrupts/exceptions. Then I'll explore caches, branch prediction, and out-of-order execution.
 
 # Instruction Set Architecture
 The instruction set architecture (ISA) is the contract between hardware and software, meaning it defines how instructions are encoded, what registers exist, and what operations a CPU can perform. It is **not** the implementation details. In other words, it defines *what* the CPU can do, but doesn't dictate *how.*
@@ -27,5 +27,5 @@ With that in mind, I can start designing the individual logical components of th
 
 Once I get everything working, I'll try to get this running on an FPGA.
 
-I'm optimistic I can get this done within four months, but Murphy's Law *is* very much a thing.
+I'm optimistic I can get this done within a few months, but Murphy's Law *is* very much a thing.
 

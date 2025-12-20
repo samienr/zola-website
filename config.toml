@@ -20,6 +20,7 @@ highlight_theme = "ayu-mirage"
 #  { theme = "rose-pine-dark", filename = "syntax-theme-dark.css" },
 #  { theme = "rose-pine-light", filename = "syntax-theme-light.css" },
 #]
+extra_syntaxes_and_themes = ["syntaxes"]
 smart_punctuation = false
 lazy_async_image = true
 
