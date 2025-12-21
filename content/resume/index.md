@@ -6,24 +6,14 @@ extra.styles = ["widebody.css"]
 A full PDF of my resume can be found [here](Resume.pdf).  
 If you are interested in any additional details, please feel free to [reach out](../contact).
 
-# <colorize>__Experience__</colorize>
-### Embedded Firmware Engineering Intern
-***Lutron — Austin, TX***  
-*Aug. 2023 – Jun. 2024 • Timer Interrupt-Driven Serial I/O*  
-- Engineered redundancy communication protocol over GPIO, increasing reliability in daisy-chained system
-- Utilized JTAG via J-Link for low-level debugging and memory inspection on ARM Cortex-M3 microcontrollers
-- Designed serial protocol via interrupt-driven bit-banging in bare-metal C to redirect backup signals
-- Reverse-engineered legacy firmware to maintain backward-compatible message routin
-
-### BIOS Firmware Engineering Co-op
-***AMD — Austin, TX***  
-*Jan. 2025 – May 2025 • SBIOS/UEFI, EDK2, C Programming*
-- Developed UEFI firmware drivers in C (EDK2) to capture in-band debug telemetry data and transmit to BMC
-- Wrote PEI module to collect hardware registers, preserving critical error telemetry via Hand-Off Blocks
-- Implemented DXE driver to retrieve and process error telemetry to preserve data for post-reboot analysis
-- Created four drivers for EDK2 Redfish Client to transmit captured data to BMC via DMTF Redfish protocol
-
 # <colorize>__Projects__</colorize>
+
+### 32-bit RISC-V Pipelined Processor Core
+*Oct. 2025 - Present • RTL Design, RISC-V, Microarchitecture, Pipelining, SystemVerilog*  
+- Designed and implemented 5-stage pipelined RV32I processor core (IF/ID/EX/MEM/WB) in SystemVerilog
+- Integrated control unit and distributed decoders for distinct instruction formats
+- Resolved data hazards using forwarding logic and handled control hazards via pipeline flushing and stall logic
+- Authored self-checking testbench to validate instruction execution against golden reference model
 
 ### Programmable Stopwatch + Timer
 *Nov. 2025 • RTL Design (Verilog), HLSM Modeling, Processor Micro-architecture, FPGA Prototyping (Basys3), Xilinx Vivado*  
@@ -74,18 +64,40 @@ If you are interested in any additional details, please feel free to [reach out]
 # <colorize>__Education__</colorize>
 #### Bachelor of Science, Electrical and Computer Engineering
 *University of Texas at Austin • Expected grad. May. 2027*
-- **Relevant Coursework:** *Computer Architecture, HDL, Embedded Systems + Lab, Operating Systems, Digital Logic Design, Circuit Theory, Data Structures, Algorithms, Linear Algebra*
+- **Relevant Coursework:** *Computer Architecture, HDL, Operating Systems, Embedded Systems Design Lab, Digital Logic Design, Circuit Theory, Data Structures, Algorithms, Linear Algebra*
+
+# <colorize>__Experience__</colorize>
+### Embedded Firmware Engineering Intern
+***Lutron — Austin, TX***  
+*May. 2025 – Aug. 2025 • Timer Interrupt-Driven Serial I/O*  
+- Engineered redundancy communication protocol over GPIO, increasing reliability in daisy-chained system
+- Utilized JTAG via J-Link for low-level debugging and memory inspection on ARM Cortex-M3 microcontrollers
+- Designed serial protocol via interrupt-driven bit-banging in bare-metal C to redirect backup signals
+- Reverse-engineered legacy firmware to maintain backward-compatible message routin
+
+### BIOS Firmware Engineering Co-op
+***AMD — Austin, TX***  
+*Jan. 2025 – May 2025 • SBIOS/UEFI, EDK2, C Programming*
+- Developed UEFI firmware drivers in C (EDK2) to capture in-band debug telemetry data and transmit to BMC
+- Wrote PEI module to collect hardware registers, preserving critical error telemetry via Hand-Off Blocks
+- Implemented DXE driver to retrieve and process error telemetry to preserve data for post-reboot analysis
+- Created four drivers for EDK2 Redfish Client to transmit captured data to BMC via DMTF Redfish protocol
 
 # <colorize>__Skills__</colorize>
+## **Languages**
+- SystemVerilog, Verilog
+- C++, Embedded C
+- ARM32 Assembly, RV32I Assembly
+- Python, Java
 
-## **Computer Architecture**
+## **Hardware**
 - FPGA Development
 - RTL Design
-- SystemVerilog + Verilog
 - Xilinx Vivado Design Suite
 - Digilent Basys3 Artix7 FPGA Board
 
 ## **Embedded**
+- UEFI/SBIOS, Linux, Seggar Ozone, EDK2, Git, KiCAD
 - JTAG Debugging
 - I2C, SPI, UART, Bluetooth
 - Timers, Interrupts, GPIO Usage
@@ -95,9 +107,4 @@ If you are interested in any additional details, please feel free to [reach out]
     - Nordic NRF
     - SiLabs EFM32LG
     - Arm-Cortex M (TI MSPM0, TM4C123)
-
-## **Software**
-- Embedded C, C++, Python, ARM Assembly, Java
-- UEFI/SBIOS, Linux, Seggar Ozone, EDK2, Git, KiCAD
-- Object Oriented Programming
 
