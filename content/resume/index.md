@@ -67,6 +67,11 @@ If you are interested in any additional details, please feel free to [reach out]
 - **Relevant Coursework:** *Computer Architecture, HDL, Operating Systems, Embedded Systems Design Lab, Digital Logic Design, Circuit Theory, Data Structures, Algorithms, Linear Algebra*
 
 # <colorize>__Experience__</colorize>
+### Power Architecture Co-op
+***AMD — Austin, TX***  
+*May. 2026 – Dec. 2026*
+- Incoming Power Architecture Intern at AMD
+
 ### Embedded Firmware Engineering Intern
 ***Lutron — Austin, TX***  
 *May. 2025 – Aug. 2025 • Timer Interrupt-Driven Serial I/O*  
